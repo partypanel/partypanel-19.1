@@ -1,0 +1,31 @@
+---
+title: "Party Panel 19.1-pre1 Report"
+author: "Lizet Wilkens, Judith Noijen & Gjalt-Jorn Peters"
+date: "`r format(Sys.time(), '%d %b %Y at %H:%M:%S');`"
+output:
+  html_document:
+    toc: true
+    #toc_float: true
+    toc_depth: 5
+    theme: united
+    css: "B:\\Data\\research\\party panel\\partypanel-shared\\party panel reports.css"
+---
+
+Introduction
+------------
+
+Party Panel is a Dutch panel study where determinants and beliefs underlying health behaviors in the Dutch nightlife are mapped. The fifth wave started on [[[ADD]]] 2019 and explored behavior related to sleeping hygiene.
+
+This document is the report of the first pre-study, where ... 
+
+```{r echo=FALSE, warning=FALSE, message=FALSE }
+
+### Set basic configuration variables
+if (!exists('ppWave')) ppWave <- '19.1';
+if (!exists('ppReport')) ppReport <- 'pre1';
+if (!exists('basePath')) basePath <- 'B:/Data/research/party panel';
+
+```
+
+
+# Here, process the `justifier` files, i.e. all files with the `jmd` extension, and generate a report.

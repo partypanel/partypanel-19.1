@@ -1,0 +1,157 @@
+---
+title: "Party Panel 19.1-pre2 Report"
+author: "Lizet Wilkens, Judith Noijen & Gjalt-Jorn Peters"
+date: "`r format(Sys.time(), '%d %b %Y at %H:%M:%S');`"
+output:
+  html_document:
+    toc: true
+    #toc_float: true
+    toc_depth: 5
+    theme: united
+    css: "B:\\Data\\research\\party panel\\partypanel-shared\\party panel reports.css"
+---
+
+Party Panel 19.1-pre2 Report
+============================
+
+Introduction
+------------
+
+Party Panel is a Dutch panel study where determinants and beliefs underlying health behaviors in the Dutch nightlife are mapped. The fifth (2019) wave explored determinants of behavior related to sleeping hygiene.
+
+This document is the report of the second pre-study, where members of the target population responded to a number of open questions, comparable to a belief elicitation procedure as recommended by Fishbein & Ajzen (2010). Put simply, they were asked about what they thought were the reasons people did, or did not, engage in the target behaviors selected in the first round.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE }
+
+########################################################################
+### Basic configuration variables; normally all you have to change
+########################################################################
+
+### Set basic configuration variables
+if (!exists('ppWave')) ppWave <- '18.1';
+if (!exists('ppReport')) ppReport <- 'pre2';
+
+########################################################################
+### Packages
+########################################################################
+
+safeRequire('here');
+safeRequire('knitr');
+safeRequire('pander');
+safeRequire('xtable');
+
+### Get dev versions of some packages
+devtools::install_gitlab("r-packages/ufs");
+devtools::install_gitlab("r-packages/yum");
+devtools::install_gitlab("r-packages/rock");
+
+########################################################################
+### Settings
+########################################################################
+
+knitr::opts_chunk$set(echo=FALSE);
+knitr::opts_chunk$set(cache=FALSE);
+knitr::opts_chunk$set(comment=NA);
+
+options(width = 160);
+options(xtable.type = "html");
+panderOptions('knitr.auto.asis', FALSE);
+panderOptions('table.split.table', Inf);
+
+########################################################################
+### Set the variables with the paths
+########################################################################
+
+### Set the additional paths
+outputPath <- here('preparation', 'pre2', 'output');
+workingPath <- here('preparation', 'pre2', 'output');
+dataPath <- here('preparation', 'pre2', 'data--[[PUBLIC]]');
+scriptPath <- here('preparation', 'pre2', 'scripts');
+
+########################################################################
+### Objects to store data for potential later use
+########################################################################
+
+### Make object(s) for Party Panel data
+if (!exists('ppDat')) ppDat <- list();
+if (!(ppWave %in% names(ppDat))) ppDat[[ppWave]] <- list();
+ppDat[[ppWave]][[ppReport]] <- list();
+
+```
+
+
+```{r, results='asis', fig.height=22}
+
+parsedSource <-
+  rock::parse_sources(dataPath,
+                      persistentIds=c("caseId"));
+
+write.csv(parsedSource$sourceDf,
+          file.path(outputPath,
+                    "sourceDf.csv"),
+          row.names=FALSE);
+
+write.csv(parsedSource$mergedSourceDf,
+          file.path(outputPath,
+                    "mergedSourceDf.csv"),
+          row.names=FALSE);
+
+print(parsedSource);
+
+plot(parsedSource$inductiveCodeTrees$code);
+
+collapsed_sum <-
+  rock::collapse_occurrences(parsedSource);
+
+collapsed_logical <-
+  rock::collapse_occurrences(parsedSource,
+                             logical=TRUE);
+
+write.csv(collapsed_sum,
+          file.path(outputPath,
+                    "collapsed-sum.csv"),
+          row.names=FALSE);
+
+write.csv(collapsed_logical,
+          file.path(outputPath,
+                    "collapsed-logical.csv"),
+          row.names=FALSE);
+
+ufs::cat0("\n\n### Collapsed data (sum:\n\n");
+
+knitr::kable(collapsed_sum);
+
+ufs::cat0("\n\n### Collapsed data (logical):\n\n");
+
+knitr::kable(collapsed_logical);
+
+### Save coded fragments for eevry code
+
+writeLines(rock::collect_coded_fragments(parsedSource, context=3),
+           file.path(outputPath,
+                     "coded-fragments.md"));
+
+```
+
+# Code frequencies
+
+```{r codeFrequencies}
+
+knitr::kable(sort(parsedSource$countedCodings, decreasing=TRUE));
+
+```
+
+# Co-occurrences
+
+```{r co-occurrence}
+
+coOcc <-
+  rock::create_cooccurrence_matrix(parsedSource,
+                                   plotHeatmap = TRUE);
+
+knitr::kable(coOcc);
+
+```
+
+
+
