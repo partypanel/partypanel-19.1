@@ -1,0 +1,23 @@
+[[cid=1]]
+
+This is an example of a coded source file that uses the Reproducible Open Coding Kit format.
+
+---
+metadata:
+  -
+    caseId: case_1
+    gender: female
+    age: 20-30
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [[raa>attitude>experiential_attitude]]
+Vivamus ornare sit amet libero quis scelerisque.
+Fusce eget aliquet justo, sed efficitur est. [[raa>perceived_norms>descriptive_norm]]
+Phasellus ultrices blandit consectetur.
+
+Proin eu tellus maximus, viverra lectus vitae, dapibus mauris.
+Sed sit amet nisi ac leo lacinia sodales. [[raa>attitude>instrumentalal_attitude]] [[raa>perceived_behavioral_control>capacity>]]
+Vivamus quam metus, efficitur sagittis nisl ut, pharetra commodo risus.
+Vestibulum iaculis libero metus, in feugiat mi tempus vel.
+Quisque faucibus nec dolor et consequat. [[other>habit>automatic]]
+
