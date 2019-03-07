@@ -1,0 +1,39 @@
+# Party Panel 19.1 target behavior selection
+
+In this `justifier` file, we describe the `decision`s we take to ultimately select a target behavior for the Party Panel round in 2019 about sleep (Party Panel 19.1 or PP19.1).
+
+Each `decision` is justified with one or more `justification`s, which are each based one one or more `assertion`s, which are each based on one or more `source`s. A `source` can be, for example, a scientific article, a report, or a book; a statement by an individual or the result of an expert consensus procedure; or the results of a quick consulting of target population members. An `assertion` is a statement of a fact, something we believe to be the case (potentially erroneously, but ideally always traceable back to one or more `source`s). A `justification` allows integrating multiple asssertions, and multiple `justification`s can be used to justify a decision.
+
+These four elements are documented in a subset of YAML that can be understood by the `justifier` package, and these YAML fragments are embedded in Markdown files to produce files like this: `jmd` files, or 'justified markdown' files. Each element will generally have the following fields with content:
+
+- `id`: A unique identifier that allows referring to this element. An `id` may never start with a number (i.e. `0-9`) and may only contain:
+  - Lowercase Latin letters (`A-Z`);
+  - Uppercase Latin letters (`a-z`);
+  - Numbers (`0-9`);
+  - Underscores (`_`).
+- `label`: A label is a human-readable 'name' for a `source`, `assertion`, `justification`, or `decision`. It should briefly describe the core of the element.
+- `description`: A description allows for more detailed information about an element.
+
+These `justifier` elements always have to be enclosed by two delimiters, specifically, two lines that contain only three dashed (`---`). There are no constraints for anything outside two delimiters, like this text - but it is strongly advised to stick to Markdown.
+
+---
+source:
+  -
+    id: phd_peters_xtc_determinants
+    label: "Peters, G. J. Y. (2008) Determinants of ecstasy use and harm reduction strategies: informing evidence-based intervention development. https://phdthesis.nl"
+    xdoi: isbn:9781409240716
+assertion:
+  -
+    id: tryout_determinants_ranking_intention
+    label: Intention to try out XTC is an extremely strong predictor of trying out XTC (Cohen's d > 1, OR > 7)
+    source:
+      id: src:phd_peters_determinant_xtc_use
+      pp: 91
+  -
+    id: tryout_determinants_ranking_attitude
+    label: Attitude is the strongest predictor of intention to try out XTC (r = .67)
+    source:
+      id: src:phd_peters_determinant_xtc_use
+      pp: 91
+--
+

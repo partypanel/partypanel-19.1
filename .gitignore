@@ -3,4 +3,8 @@
 .RData
 .Ruserdata
 
+### Exclude anything in the 'private' directory and all files
+### and directories that contain '[[PRIVATE]]' somewhere
 private\
+\[\[PRIVATE]]
+
