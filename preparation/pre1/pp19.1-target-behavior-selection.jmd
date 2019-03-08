@@ -16,24 +16,505 @@ These four elements are documented in a subset of YAML that can be understood by
 
 These `justifier` elements always have to be enclosed by two delimiters, specifically, two lines that contain only three dashed (`---`). There are no constraints for anything outside two delimiters, like this text - but it is strongly advised to stick to Markdown.
 
+
 ---
 source:
   -
-    id: phd_peters_xtc_determinants
-    label: "Peters, G. J. Y. (2008) Determinants of ecstasy use and harm reduction strategies: informing evidence-based intervention development. https://phdthesis.nl"
-    xdoi: isbn:9781409240716
+    id: source_Diekelmann
+    label: "Diekelmann & Born (2010) The memory function of sleep." 
+    xdoi: https://doi.org/10.1038/nrn2762
+---
+source:
+  -
+    id: source_Gais
+    label: "Gais (2003) Sleep after learning aids memory recall." 
+    xdoi: https://doi.org/10.1101/lm.132106
+---
+source:
+  -
+    id: source_Menz
+    label: "Menz et al (2013) The role of sleep and sleep deprivation in consolidating fear memories." 
+    xdoi: https://doi.org/10.1016/j.neuroimage.2013.03.001
+---
+source:
+  -
+    id: source_Holland
+    label: "Holland & Lewis (2007) Emotional memory: selective enhancement by sleep." 
+    xdoi: https://doi.org/10.1016/j.cub.2006.12.033
+---
+source:
+  -
+    id: source_Graves
+    label: "Graves (2003) Sleep deprivation selectively impairs memory consolidation for contextual fear conditioning." 
+    xdoi: https://doi.org/10.1101/lm.48803
+---
+source:
+  -
+    id: source_Frey
+    label: "Frey et al (2007) The effects of 40 hours of total sleep deprivation on inflammatory markers in healthy young adults." 
+    xdoi: https://doi.org/10.1016/j.bbi.2007.04.003
+---
+source:
+  -
+    id: source_Xie
+    label: "Zie et al (2013) ). Sleep drives metabolite clearance from the adult brain." 
+    xdoi: https://doi.org/10.1126/science.1241224
+---
+source:
+  -
+    id: source_Brokaw
+    label: "Brokaw et al (2016) Resting state EEG correlates of memory consolidation." 
+    xdoi: 130, 17–25. https://doi.org/10.1016/j.nlm.2016.01.008
+---
+source:
+  -
+    id: source_Marrosu
+    label: "Marrosu et al (1995) Microdialysis measurement of cortical and hippocampal acetylcholine release during sleep-wake cycle in freely moving cats." 
+    xdoi: Brain Research, 671, 329–332.
+---
+source:
+  -
+    id: source_Lange
+    label: "Lange et al (2010) Effects of sleep and circadian rhythm on the human immune system." 
+    xdoi: https://doi.org/10.1111/j.1749-6632.2009.05300.x
+---
+source:
+  -
+    id: source_Burgess
+    label: "Burgess et al (2002) ). Bright light, dark and melatonin can promote circadian adaptation in night shift workers." 
+    xdoi: https://doi.org/10.1053/smrv.2001.0215
+---
+source:
+  -
+    id: source_Plog
+    label: "Plog & Nedergaard (2018) The glymphatic system in central nervous system health and disease: past, present, and future" 
+    xdoi: https://doi.org/10.1146/annurev-pathol-051217-111018
+---
+source:
+  -
+    id: source_Killgore13
+    label: "Klilgore & Weber (2013) Sleep deprivation and cognitive performance." 
+    xdoi: https://doi.org/10.1007/978-1-4614-9087-6_16
+---
+source:
+  -
+    id: source_Howard
+    label: "Harrison & Horne (2000) The impact of sleep deprivation on decision making: A review." 
+    xdoi: https://doi.org/10.1037/1076-898x.6.3.236
+---
+source:
+  -
+    id: source_Doran
+    label: "Doran et al (2001) Sustained attention performance during sleep deprivation: evidence of state instability." 
+    xdoi: https://doi.org/10.1101/lm.132106
+---
+source:
+  -
+    id: source_Killgore07
+    label: "Killgore et al (2007) The trait of Introversion–Extraversion predicts vulnerability to sleep deprivation." 
+    xdoi: https://doi.org/10.1111/j.1365-2869.2007.00611.x
+---
+source:
+  -
+    id: source_VanDongen
+    label: "Van Dongen et al (2003) Sleep debt: Theoretical and empirical issues." 
+    xdoi: Sleep and Biological Rhythms, 1, 5–13
+---
+source:
+  -
+    id: source_Kuypers
+    label: "Kuypers (2007) "psychedelic bliss: memory and risk taking during MDMA intoxication." 
+    xdoi: ISBN 978-90-9021656-0
+---
+source:
+  -
+    id: source_Williamson
+    label: "Williamson & Feyer (2000) Moderate sleep deprivation produces impairments in cognitive and motor performance equivalent to legally prescribed levels of alcohol intoxication." 
+    xdoi: 
+---
+source:
+  -
+    id: source_Peeke
+    label: "Peeke et al (1980) Combined effects of alcohol and sleep deprivation in normal young adults." 
+    xdoi: 
+---
+source:
+  -
+    id: source_Croes
+    label: "Croes et al (2017) Langdurige klachten na ecstasygebruik." 
+    xdoi: Geraadpleegd van https://www.trimbos.nl/docs/2c1748e6-93d5-481b-8fad-013f91a9e1df.pdf
+---
+source:
+  -
+    id: source_Berger
+    label: "Energy conservation and sleep."
+    xdoi: https://doi.org/10.1016/0166-4328(95)00002-b
+---
+source:
+  -
+    id: source_Fairclough
+    label: "Fairclough & Graham (1999) Impairment of driving performance caused by sleep deprivation or alcohol: A comparative Study. " 
+    xdoi: https://doi.org/10.1518/001872099779577336
+---
+source:
+  -
+    id: source_Krueger
+    label: "Kreueger et al (2006) The role of cytokines in physiological sleep regulation 
+    xdoi: https://doi.org/10.1111/j.1749-6632.2001.tb05826.x
+---
+source:
+  -
+    id: source_Jessen
+    label: "Jessen et al (2015) The Glymphatic System: A Beginner’s Guide." 
+    xdoi: https://doi.org/10.1007/s11064-015-1581-6
+---
+source:
+  -
+    id: source_Lim
+    label: "Lim & Dinges (2010) A meta-analysis of the impact of short-term sleep deprivation on cognitive variables." 
+    xdoi: https://doi.org/10.1037/a0018883
+---
+source:
+  -
+    id: source_Tononi
+    label: "Tononi & Cirelli (2006) ). Sleep function and synaptic homeostasis." 
+    xdoi: https://doi.org/10.1016/j.smrv.2005.05.002
+---
+source:
+  -
+    id: source_Beebe
+    label: "Beebe et al (2010). Attention, learning, and arousal of experimentally sleep-restricted adolescents in a simulated classroom" 
+    xdoi: https://doi.org/10.1016/j.jadohealth.2010.03.005
+---
 assertion:
   -
-    id: tryout_determinants_ranking_intention
-    label: Intention to try out XTC is an extremely strong predictor of trying out XTC (Cohen's d > 1, OR > 7)
+    id: assertion_sleep_memory_1
+    label: Sleep promotes the consolidation of memory in humans.
     source:
-      id: src:phd_peters_determinant_xtc_use
-      pp: 91
+      id: source_Diekelmann
+---
+assertion:
   -
-    id: tryout_determinants_ranking_attitude
-    label: Attitude is the strongest predictor of intention to try out XTC (r = .67)
+    id: assertion_sleep_memory_2
+    label: Sleep promotes the consolidation of memory in humans.
     source:
-      id: src:phd_peters_determinant_xtc_use
-      pp: 91
+      id: source_Gais
+---
+assertion:
+  -
+    id: assertion_sleep_memory_3
+    label: Sleep promotes the consolidation of fear memory in humans.
+    source:
+      id: source_Menz
+---
+assertion:
+  -
+    id: assertion_sleep_memory_4
+    label: Sleep promotes the consolidation of emotional memory in humans.
+    source:
+      id: source_Holland
+---
+assertion:
+  -
+    id: assertion_sleep_memory_5
+    label: Sleep promotes the consolidation of memory in animals after training for a specific task.
+    source:
+      id: source_Graves
+---
+assertion:
+  -
+    id: assertion_sleep_memory_6
+    label: Memory retention is already noticable after only several minutes of sleep.
+    source:
+      id: source_Diekelmann
+---
+assertion:
+  -
+    id: assertion_cytokines
+    label: Infection, stress and tissue damage triggers the release of inflammatory cytokines. 
+    source:
+      id: source_Frey
+---
+assertion:
+  -
+    id: assertion_cytokines_function 
+    label: When pro-inflammatory cytokines are injected, these cytokines enhance sleep.
+    source:
+      id: source_Krueger
+---
+assertion:
+  -
+    id: assertion_sleep_glympathic_system
+    label: Sleep promotes the glympathic system.
+    source:
+      id: source_Xie
+---
+assertion:
+  -
+    id: assertion_SD_cytokines
+    label: Sleep deprivation is associated with an increase of pro-inflammatory cytokines, which creates a disbalance of inflammatory cytokines and this induces inflammation. 
+    source:
+      id: source_Frey
+---
+assertion:
+  - 
+    id: assertion_resting_1
+    label: Resting enhances the consolidation of memory.
+    source:
+      id: source_Brokaw
+---
+assertion:
+  -
+    id: assertion_resting_2
+    label: The neurotransmitter ACh is released during quiet rest, just like during sleep.
+    source:
+      id: source_Marrosu
+---
+assertion:
+  -
+    id: assertion_nocturnal_1
+    label: Cells like leukocytes show a specific diurnal or nocturnal rhythm.
+    source:
+      id: source_Lange 
+---
+assertion:
+  -
+    id: assertion_nocturnal_2 
+    label: During nocturnal sleep cell counts of toxic cells are suppressed.
+    source:
+      id: source_Lange 
+---
+assertion:
+  -
+    id: assertion_sleep_debt
+    label: Sleep deprivation results in a sleep debt, which has unhealthy consequences. 
+    source:
+      id: source_Burgess
+---
+assertion:
+  -
+    id: assertion_glympathic_system_2
+    label: Failure of the glympathic system is associated with Alzheimer's disease. 
+    source:
+      id: source_Plog
+---
+assertion:
+  -
+    id: assertion_glympathic_system_1
+    label: The glympathic system is a recently discovered waste clearance pathway that removes metabolites and toxic proteins from the brain. 
+    source:
+      id: source_Jessen
+---
+assertion:
+  -
+    id: assertion_SD_performance
+    label: (Cognitive) performance deteriorates after 16 hours of wakefulness. 
+    source:
+      id: source_Killgore13
+---
+assertion:
+  -
+    id: assertion_SD_sensory_perception
+    label: Sleep loss causes a reduction in visual cortex activity and the reduction is most prominent when an individual experiences an attentional lapse.  
+    source:
+      id: source_Killgore13
+---
+assertion:
+  -
+    id: assertion_inattentive_behaviours 
+    label: sleep deprived individuals showed significantly more inattentive behaviours compared to non-sleep deprived individuals while watching a movie. 
+    source:
+      id: source_Beebe
+---
+assertion:
+  -
+    id: assertion_SD_decision
+    label: Sleep deprivation affects the decision making proces. 
+    source:
+      id: source_Harrison
+---
+assertion:
+  -
+    id: assertion_state_instability
+    label: After sleep deprivation performance becomes instable, which is called state instability. 
+    source:
+      id: source_Doran
+---
+assertion:
+  -
+    id: assertion_SD_emotion_1
+    label: Sleep loss enhances the strenth of reactions to negative, but not to positive or neutral stimuli.  
+    source:
+      id: source_Killgore13
+---
+assertion:
+  -
+    id: assertion_SD_emotion_2
+    label: Humor is negatively evaluated and emotional expression is lost in the voice after sleep deprivation.  
+    source:
+      id: source_Killgore13
+---
+assertion:
+  -
+    id: assertion_individual_differences_1
+    label: The personality trait extraversion is more related to attentional lapses and more extensive declines in speed response during a task after one night of sleep deprivation.  
+    source:
+      id: source_Killgore07
+---
+assertion:
+  -
+    id: assertion_individual_differences_2
+    label: There is a genetic predisposition for vulnerability to sleep loss. 
+    source:
+      id: source_VanDongen
+---
+assertion:
+  -
+    id: assertion_MDMA_impulse_daytime
+    label: When MDMA is taken during daytime, impulse control is enhanced. 
+    source:
+      id: source_Kuypers
+---
+assertion:
+  -
+    id: assertion_MDMA_impulse_nighttime 
+    label: When MDMA is taken during nighttime, impulse control is not enhanced. 
+    source:
+      id: source_Kuypers
+---
+assertion:
+  -
+    id: assertion_MDMA_PMF_daytime 
+    label: When MDMA is taken during daytime psychomotor functioning is enhanced. 
+    source:
+      id: source_Kuypers
+---
+assertion:
+  -
+    id: assertion_MDMA_PMF_nighttime
+    label: When MDMA is taken during nighttime psychomotor functioning is impaired. 
+    source:
+      id: source_Kuypers
+---
+assertion:
+  -
+    id: assertion_SD_alcohol
+    label: Sleep deprivation causes cognitive and motor performance impairment similar to alcohol intoxication. 
+    source:
+      id: source_Williamson
+---
+assertion:
+  -
+    id: assertion_interaction_SD_alcohol_1
+    label: People who are under the influence of alcohol and who are sleep deprived react slower than people who are either are under the influence of alcohol or sleep deprived alone.
+    source:
+      id: source_Peeke
+---
+assertion:
+  -
+    id: assertion_interaction_SD_alcohol_2
+    label: People who are under the influence of alcohol and who are sleep deprived show worse driving performance than people who either are under the influence of alcohol or sleep deprived alone.  
+    source:
+      id: source_Howard
+---
+assertion:
+  -
+    id: assertion_MDMA_cortisol 
+    label: Cortisol levels rise after MDMA is taken. 
+    source:
+      id: source_Croes 
+---
+assertion:
+  -
+    id: assertion_resting_3
+    label: Important functions of sleep, like recovery of neural function and synaptic downscaling to save energy and experience benefits for learning and memory, only occur together with slow wave sleep and therefore not while resting.  
+    source:
+      id: source_Tononi
+---
+assertion:
+  -
+    id: assertion_attention
+    label: The most simple form of attention, that is being able to detect a stimulus, is most strongly affected by sleep deprivation. 
+    source:
+      id: source_Lim
+---
+Justification_01: Sleep prevents us from getting sick and (therefore) sleep deprivation causes an impaired immune system. Sleep prevents a disbalance of inflammatory cytokines and therefore health is maintained. 
+Type: article journal 
+Based on assertions:  
+  -
+    id: assertion_cytokines, assertion_cytokines_function, assertion_SD_cytokines
+---
+Justification_02: Sleep is important for our memory and (therefore) sleep deprivation causes memory impairment. 
+Type: article journal 
+Based on assertions: 
+  - 
+    id: assertion_sleep_memory_1, assertion_sleep_memory_2, assertion_sleep_memory_3,  assertion_sleep_memory_4, assertion_sleep_memory_5, assertion_sleep_memory_6. 
+---
+Justification_03: Sleep protects us from toxicants and (therefore) sleep deprivation is associated with neurological diseases.
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_glympathic_system_1, assertion_glympathic_system_2, assertion_sleep_glympathic_system
+---
+Justification_04: Resting is not as beneficial as sleep, but is preferred over total sleep deprivation as resting state resembles a sleep state. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_resting_1, assertion_resting_2, assertion_resting_3
+ ---
+Justification_05: Nocturnal sleep is preferred over diurnal sleep, but diurnal sleep is preferred over total sleep deprivation. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_nocturnal_1, assertion_nocturnal_2, assertion_sleep_debt
+---
+Justification_06: Sleep deprivation causes impaired cognitive performance. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_SD_performance, assertion_attention, assertion_inattentive_behaviours 
+---
+Justification_07: Sleep deprivation causes impaired decision making. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_SD_decision
+---
+Justification_08: Sleep deprivation causes state instability.
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_state_instability
+---
+Justification_09: Sleep deprivation causes impaired sensory perception. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_SD_sensory_perception
 --
-
+Justification_10: Sleep deprivation affects emotional perception and experience. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_SD_emotion_1, assertion_SD_emotion_2
+---
+Justification_11: There are individual differences in the effect sleep deprivation has on people. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_individual_differences_1, assertion_individual_differences_2
+---
+Justification_12: There is an interaction between sleep deprivation and MDMA. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_MDMA_PMF_nighttime, assertion_MDMA_PMF_daytime, assertion_MDMA_impulse_nighttime, assertion_MDMA_impulse_daytime
+---
+Justification_13: There is an interaction between sleep deprivation and alcohol. 
+Type: article journal 
+Based on assertions:
+  - 
+    id: assertion_SD_alcohol, assertion_interaction_SD_alcohol_1, assertion_interaction_SD_alcohol_2
+---
+Decision_01: People should do so and so because of justifications 04,05,07,10 etc. 
+Decision_02: .... 
