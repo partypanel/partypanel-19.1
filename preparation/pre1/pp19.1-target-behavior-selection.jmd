@@ -315,84 +315,83 @@ assertion:
     label: The most simple form of attention, that is being able to detect a stimulus, is most strongly affected by sleep deprivation. 
     source:
       id: source_Lim
----
-Justification_01: Sleep prevents us from getting sick and (therefore) sleep deprivation causes an impaired immune system. Sleep prevents a disbalance of inflammatory cytokines and therefore health is maintained. 
-Type: article journal 
-Based on assertions:  
+justification:
   -
-    id: assertion_cytokines, assertion_cytokines_function, assertion_SD_cytokines
----
-Justification_02: Sleep is important for our memory and (therefore) sleep deprivation causes memory impairment. 
-Type: article journal 
-Based on assertions: 
-  - 
-    id: assertion_sleep_memory_1, assertion_sleep_memory_2, assertion_sleep_memory_3,  assertion_sleep_memory_4, assertion_sleep_memory_5, assertion_sleep_memory_6. 
----
-Justification_03: Sleep protects us from toxicants and (therefore) sleep deprivation is associated with neurological diseases.
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_glympathic_system_1, assertion_glympathic_system_2, assertion_sleep_glympathic_system
----
-Justification_04: Resting is not as beneficial as sleep, but is preferred over total sleep deprivation as resting state resembles a sleep state. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_resting_1, assertion_resting_2, assertion_resting_3
- ---
-Justification_05: Nocturnal sleep is preferred over diurnal sleep, but diurnal sleep is preferred over total sleep deprivation. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_nocturnal_1, assertion_nocturnal_2, assertion_sleep_debt
----
-Justification_06: Sleep deprivation causes impaired cognitive performance. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_SD_performance, assertion_attention, assertion_inattentive_behaviours 
----
-Justification_07: Sleep deprivation causes impaired decision making. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_SD_decision
----
-Justification_08: Sleep deprivation causes state instability.
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_state_instability
----
-Justification_09: Sleep deprivation causes impaired sensory perception. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_SD_sensory_perception
---
-Justification_10: Sleep deprivation affects emotional perception and experience. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_SD_emotion_1, assertion_SD_emotion_2
----
-Justification_11: There are individual differences in the effect sleep deprivation has on people. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_individual_differences_1, assertion_individual_differences_2
----
-Justification_12: There is an interaction between sleep deprivation and MDMA. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_MDMA_PMF_nighttime, assertion_MDMA_PMF_daytime, assertion_MDMA_impulse_nighttime, assertion_MDMA_impulse_daytime
----
-Justification_13: There is an interaction between sleep deprivation and alcohol. 
-Type: article journal 
-Based on assertions:
-  - 
-    id: assertion_SD_alcohol, assertion_interaction_SD_alcohol_1, assertion_interaction_SD_alcohol_2
----
-Decision_01: People should do so and so because of justifications 04,05,07,10 etc. 
-Decision_02: .... 
+    id: justification_01
+    label: Sleep prevents us from getting sick and (therefore) sleep deprivation causes an impaired immune system. Sleep prevents a disbalance of inflammatory cytokines and therefore health is maintained.
+    assertion:
+      id: [assertion_cytokines, assertion_cytokines_function, assertion_SD_cytokines]
+  -
+    id: justification_02
+    label: Sleep is important for our memory and (therefore) sleep deprivation causes memory impairment. 
+    assertion:
+      id: [assertion_sleep_memory_1, assertion_sleep_memory_2, assertion_sleep_memory_3,  assertion_sleep_memory_4, assertion_sleep_memory_5, assertion_sleep_memory_6]
+  -
+    id: justification_03
+    label: Sleep protects us from toxicants and (therefore) sleep deprivation is associated with neurological diseases.
+    assertion
+      id: [assertion_glympathic_system_1, assertion_glympathic_system_2, assertion_sleep_glympathic_system]
+  -
+    id: justification_04
+    label: Resting is not as beneficial as sleep, but is preferred over total sleep deprivation as resting state resembles a sleep state. 
+    assertion
+      id: [assertion_resting_1, assertion_resting_2, assertion_resting_3]
+  -
+    id: justification_05
+    label: Nocturnal sleep is preferred over diurnal sleep, but diurnal sleep is preferred over total sleep deprivation. 
+    assertion
+      id: [assertion_nocturnal_1, assertion_nocturnal_2, assertion_sleep_debt]
+  -
+    id: justification_06
+    label: Sleep deprivation causes impaired cognitive performance.
+    assertion
+      id: [assertion_SD_performance, assertion_attention, assertion_inattentive_behaviours]
+  -
+    id: justification_07
+    label: Sleep deprivation causes impaired decision making.
+    assertion
+      id: [assertion_SD_decision]
+  -
+    id: justification_08
+    label: Sleep deprivation causes state instability.
+    assertion
+      id: [assertion_state_instability]
+  -
+    id: justification_09
+    label: Sleep deprivation causes impaired sensory perception. 
+    assertion
+      id: [assertion_SD_sensory_perception]
+  -
+    id: justification_10
+    label: Sleep deprivation affects emotional perception and experience.
+    assertion
+      id: [assertion_SD_emotion_1, assertion_SD_emotion_2]
+  -
+    id: justification_11
+    label: There are individual differences in the effect sleep deprivation has on people.
+    assertion
+      id: [assertion_individual_differences_1, assertion_individual_differences_2]
+  -
+    id: justification_12
+    label: There is an interaction between sleep deprivation and MDMA. 
+    assertion
+      id: [assertion_MDMA_PMF_nighttime, assertion_MDMA_PMF_daytime, assertion_MDMA_impulse_nighttime, assertion_MDMA_impulse_daytime]
+  -
+    id: justification_13
+    label: There is an interaction between sleep deprivation and alcohol.
+    assertion
+      id: [assertion_SD_alcohol, assertion_interaction_SD_alcohol_1, assertion_interaction_SD_alcohol_2]
+decision:
+  -
+    id: decision_to_select_behavior_1
+    label: People should do so and so because of justifications 04,05,07,10 etc.
+    justification:
+      id: [justification_04, justification_05, justification_07, justification_10]
+  -
+    id: decision_to_select_behavior_2
+    label: People should do so and so because of 
+    justification:
+      id: [justification_01, justification_02]
+---    
+
+
