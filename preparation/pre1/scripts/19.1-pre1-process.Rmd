@@ -9,6 +9,8 @@ output:
     toc_depth: 5
     theme: united
     css: "B:\\Data\\research\\party panel\\partypanel-shared\\party panel reports.css"
+editor_options: 
+  chunk_output_type: console
 ---
 
 Introduction
@@ -26,6 +28,14 @@ if (!exists('ppReport')) ppReport <- 'pre1';
 if (!exists('basePath')) basePath <- 'B:/Data/research/party panel';
 
 ```
+
+```{r import-jmd-files}
+
+a <- yum::load_and_simplify_dir(here::here("preparation",
+                                           "pre1"));
+
+```
+
 
 
 # Here, process the `justifier` files, i.e. all files with the `jmd` extension, and generate a report.
