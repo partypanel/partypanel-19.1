@@ -134,253 +134,182 @@ source:
     id: source_Beebe
     label: "Beebe et al (2010). Attention, learning, and arousal of experimentally sleep-restricted adolescents in a simulated classroom" 
     xdoi: https://doi.org/10.1016/j.jadohealth.2010.03.005
----
 assertion:
   -
     id: assertion_sleep_memory_1
     label: Sleep promotes the consolidation of memory in humans.
     source:
       id: source_Diekelmann
----
-assertion:
   -
     id: assertion_sleep_memory_2
     label: Sleep promotes the consolidation of memory in humans.
     source:
       id: source_Gais
----
-assertion:
   -
     id: assertion_sleep_memory_3
     label: Sleep promotes the consolidation of fear memory in humans.
     source:
       id: source_Menz
----
-assertion:
   -
     id: assertion_sleep_memory_4
     label: Sleep promotes the consolidation of emotional memory in humans.
     source:
       id: source_Holland
----
-assertion:
   -
     id: assertion_sleep_memory_5
     label: Sleep promotes the consolidation of memory in animals after training for a specific task.
     source:
       id: source_Graves
----
-assertion:
   -
     id: assertion_sleep_memory_6
     label: Memory retention is already noticable after only several minutes of sleep.
     source:
       id: source_Diekelmann
----
-assertion:
   -
     id: assertion_cytokines
     label: Infection, stress and tissue damage triggers the release of inflammatory cytokines. 
     source:
       id: source_Frey
----
-assertion:
   -
     id: assertion_cytokines_function 
     label: When pro-inflammatory cytokines are injected, these cytokines enhance sleep.
     source:
       id: source_Krueger
----
-assertion:
   -
     id: assertion_sleep_glympathic_system
     label: Sleep promotes the glympathic system.
     source:
       id: source_Xie
----
-assertion:
   -
     id: assertion_SD_cytokines
     label: Sleep deprivation is associated with an increase of pro-inflammatory cytokines, which creates a disbalance of inflammatory cytokines and this induces inflammation. 
     source:
       id: source_Frey
----
-assertion:
   - 
     id: assertion_resting_1
     label: Resting enhances the consolidation of memory.
     source:
       id: source_Brokaw
----
-assertion:
   -
     id: assertion_resting_2
     label: The neurotransmitter ACh is released during quiet rest, just like during sleep.
     source:
       id: source_Marrosu
----
-assertion:
   -
     id: assertion_nocturnal_1
     label: Cells like leukocytes show a specific diurnal or nocturnal rhythm.
     source:
       id: source_Lange 
----
-assertion:
   -
     id: assertion_nocturnal_2 
     label: During nocturnal sleep cell counts of toxic cells are suppressed.
     source:
       id: source_Lange 
----
-assertion:
   -
     id: assertion_sleep_debt
     label: Sleep deprivation results in a sleep debt, which has unhealthy consequences. 
     source:
       id: source_Burgess
----
-assertion:
   -
     id: assertion_glympathic_system_2
     label: Failure of the glympathic system is associated with Alzheimer's disease. 
     source:
       id: source_Plog
----
-assertion:
   -
     id: assertion_glympathic_system_1
     label: The glympathic system is a recently discovered waste clearance pathway that removes metabolites and toxic proteins from the brain. 
     source:
       id: source_Jessen
----
-assertion:
   -
     id: assertion_SD_performance
     label: (Cognitive) performance deteriorates after 16 hours of wakefulness. 
     source:
       id: source_Killgore13
----
-assertion:
   -
     id: assertion_SD_sensory_perception
     label: Sleep loss causes a reduction in visual cortex activity and the reduction is most prominent when an individual experiences an attentional lapse.  
     source:
       id: source_Killgore13
----
-assertion:
   -
     id: assertion_inattentive_behaviours 
     label: sleep deprived individuals showed significantly more inattentive behaviours compared to non-sleep deprived individuals while watching a movie. 
     source:
       id: source_Beebe
----
-assertion:
   -
     id: assertion_SD_decision
     label: Sleep deprivation affects the decision making proces. 
     source:
       id: source_Harrison
----
-assertion:
   -
     id: assertion_state_instability
     label: After sleep deprivation performance becomes instable, which is called state instability. 
     source:
       id: source_Doran
----
-assertion:
   -
     id: assertion_SD_emotion_1
     label: Sleep loss enhances the strenth of reactions to negative, but not to positive or neutral stimuli.  
     source:
       id: source_Killgore13
----
-assertion:
   -
     id: assertion_SD_emotion_2
     label: Humor is negatively evaluated and emotional expression is lost in the voice after sleep deprivation.  
     source:
       id: source_Killgore13
----
-assertion:
   -
     id: assertion_individual_differences_1
     label: The personality trait extraversion is more related to attentional lapses and more extensive declines in speed response during a task after one night of sleep deprivation.  
     source:
       id: source_Killgore07
----
-assertion:
   -
     id: assertion_individual_differences_2
     label: There is a genetic predisposition for vulnerability to sleep loss. 
     source:
       id: source_VanDongen
----
-assertion:
   -
     id: assertion_MDMA_impulse_daytime
     label: When MDMA is taken during daytime, impulse control is enhanced. 
     source:
       id: source_Kuypers
----
-assertion:
   -
     id: assertion_MDMA_impulse_nighttime 
     label: When MDMA is taken during nighttime, impulse control is not enhanced. 
     source:
       id: source_Kuypers
----
-assertion:
   -
     id: assertion_MDMA_PMF_daytime 
     label: When MDMA is taken during daytime psychomotor functioning is enhanced. 
     source:
       id: source_Kuypers
----
-assertion:
   -
     id: assertion_MDMA_PMF_nighttime
     label: When MDMA is taken during nighttime psychomotor functioning is impaired. 
     source:
       id: source_Kuypers
----
-assertion:
   -
     id: assertion_SD_alcohol
     label: Sleep deprivation causes cognitive and motor performance impairment similar to alcohol intoxication. 
     source:
       id: source_Williamson
----
-assertion:
   -
     id: assertion_interaction_SD_alcohol_1
     label: People who are under the influence of alcohol and who are sleep deprived react slower than people who are either are under the influence of alcohol or sleep deprived alone.
     source:
       id: source_Peeke
----
-assertion:
   -
     id: assertion_interaction_SD_alcohol_2
     label: People who are under the influence of alcohol and who are sleep deprived show worse driving performance than people who either are under the influence of alcohol or sleep deprived alone.  
     source:
       id: source_Howard
----
-assertion:
   -
     id: assertion_MDMA_cortisol 
     label: Cortisol levels rise after MDMA is taken. 
     source:
       id: source_Croes 
----
-assertion:
   -
     id: assertion_resting_3
     label: Important functions of sleep, like recovery of neural function and synaptic downscaling to save energy and experience benefits for learning and memory, only occur together with slow wave sleep and therefore not while resting.  
     source:
       id: source_Tononi
----
-assertion:
   -
     id: assertion_attention
     label: The most simple form of attention, that is being able to detect a stimulus, is most strongly affected by sleep deprivation. 
