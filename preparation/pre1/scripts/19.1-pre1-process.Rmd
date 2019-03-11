@@ -25,17 +25,54 @@ This document is the report of the first pre-study, where ...
 ### Set basic configuration variables
 if (!exists('ppWave')) ppWave <- '19.1';
 if (!exists('ppReport')) ppReport <- 'pre1';
-if (!exists('basePath')) basePath <- 'B:/Data/research/party panel';
+
+### General purpose utilies and installing missing packages when requiring
+if (!'ufs' %in% row.names(installed.packages())) devtools::install_gitlab('r-packages/ufs');
+
+### File input/output
+ufs::safeRequire('here');
+
+### Working with decision trees
+ufs::safeRequire('data.tree');
+ufs::safeRequire('DiagrammeR');
+
+### General purpose utilities, dataviz, etc
+ufs::safeRequire('userfriendlyscience');
+
+### Get dev versions of some packages
+devtools::install_gitlab("r-packages/yum");
+devtools::install_gitlab("r-packages/justifier");
+
+### Set paths
+if (!exists('basePath')) basePath <- here::here();
+justificationsPath <-
+  here::here('preparation',
+             ppReport);
+workingPath <-
+  file.path(justificationsPath,
+            "results--intermediate");
 
 ```
 
 ```{r import-jmd-files}
 
-a <- yum::load_and_simplify_dir(here::here("preparation",
-                                           "pre1"));
+justifications <-
+  justifier::load_justifications(file.path(justificationsPath,
+                                 "pp19.1-target-behavior-selection.jmd"));
 
 ```
 
+```{r save-decision-trees}
 
+decisions <-
+  data.tree::Get(justifications$fullTree$decisions$children, 'name');
 
-# Here, process the `justifier` files, i.e. all files with the `jmd` extension, and generate a report.
+for (i in decisions) {
+  DiagrammeR::export_graph(data.tree::ToDiagrammeRGraph(justifications$fullTree$decisions[[i]],
+                                                        direction="descend"),
+                           file_name = file.path(workingPath,
+                                                 paste0(i, ".pdf")));
+}
+
+```
+

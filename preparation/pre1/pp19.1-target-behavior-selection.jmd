@@ -89,7 +89,7 @@ source:
     xdoi: doi:10.1007/978-1-4614-9087-6_16
     type: "Journal article"
   -
-    id: source_Howard
+    id: source_Harrison
     label: "Harrison & Horne (2000) The impact of sleep deprivation on decision making: A review." 
     xdoi: doi:10.1037/1076-898x.6.3.236
     type: "Journal article"
@@ -324,8 +324,9 @@ assertion:
   -
     id: assertion_interaction_SD_alcohol_2
     label: People who are under the influence of alcohol and who are sleep deprived show worse driving performance than people who either are under the influence of alcohol or sleep deprived alone.  
+    comment: "this source was 'Howard'. But the one that was named 'Howard', I renamed to 'Harrison'. Smth wrong here?"
     source:
-      id: source_Howard
+      id: source_Harrison
   -
     id: assertion_MDMA_cortisol 
     label: Cortisol levels rise after MDMA is taken. 
