@@ -1,66 +1,76 @@
-# Party Panel 19.1 target behavior selection
+---
+title: "Party Panel 19.1-pre1 Report"
+author: "Lizet Wilken, Judith Noijen & Gjalt-Jorn Peters"
+date: "`r format(Sys.time(), '%d %b %Y at %H:%M:%S');`"
+output:
+  html_document:
+    toc: true
+    #toc_float: true
+    toc_depth: 5
+    theme: united
+    css: "B:\\Data\\research\\party panel\\partypanel-shared\\party panel reports.css"
+---
 
-In this `justifier` file, we describe the `decision`s we take to ultimately select a target behavior for the Party Panel round in 2019 about sleep (Party Panel 19.1 or PP19.1).
+Introduction
+------------
 
-Each `decision` is justified with one or more `justification`s, which are each based one one or more `assertion`s, which are each based on one or more `source`s. A `source` can be, for example, a scientific article, a report, or a book; a statement by an individual or the result of an expert consensus procedure; or the results of a quick consulting of target population members. An `assertion` is a statement of a fact, something we believe to be the case (potentially erroneously, but ideally always traceable back to one or more `source`s). A `justification` allows integrating multiple asssertions, and multiple `justification`s can be used to justify a decision.
+Party Panel is a Dutch panel study where determinants and beliefs underlying health behaviors in the Dutch nightlife are mapped. The fifth wave started on [[[ADD]]] 2019 and explored behavior related to sleeping hygiene.
 
-These four elements are documented in a subset of YAML that can be understood by the `justifier` package, and these YAML fragments are embedded in Markdown files to produce files like this: `jmd` files, or 'justified markdown' files. Each element will generally have the following fields with content:
+This document is the report of the first pre-study, where ... 
 
-- `id`: A unique identifier that allows referring to this element. An `id` may never start with a number (i.e. `0-9`) and may only contain:
-  - Lowercase Latin letters (`A-Z`);
-  - Uppercase Latin letters (`a-z`);
-  - Numbers (`0-9`);
-  - Underscores (`_`).
-- `label`: A label is a human-readable 'name' for a `source`, `assertion`, `justification`, or `decision`. It should briefly describe the core of the element.
-- `description`: A description allows for more detailed information about an element.
+```{r echo=FALSE, warning=FALSE, message=FALSE }
 
-These `justifier` elements always have to be enclosed by two delimiters, specifically, two lines that contain only three dashed (`---`). There are no constraints for anything outside two delimiters, like this text - but it is strongly advised to stick to Markdown.
+### Set basic configuration variables
+if (!exists('ppWave')) ppWave <- '19.1';
+if (!exists('ppReport')) ppReport <- 'pre1';
+if (!exists('basePath')) basePath <- 'B:/Data/research/party panel';
 
-Elements can be specified either one by one, in which case they start with naming their type followed by a colon (e.g. `source:`), after which the fields in that element are indented by two spaces, and each field is followed by its value (for longer or complexer strings, it's wise to quote them, to avoid using characters that the YAML parser considers part of the YAML specification).
+```
 
-If you want to specify multiple elements of the same type, you can do this by only listing their name once, and then using dashes and extra indenting by two spaces to create a list (you cannot specify multiple elements with the same name in YAML).
+
+# Here, process the `justifier` files, i.e. all files with the `jmd` extension, and generate a report.
 
 ---
 source:
   -
     id: source_Diekelmann
     label: "Diekelmann & Born (2010) The memory function of sleep." 
-    xdoi: "doi:10.1038/nrn2762"
+    xdoi: doi:10.1038/nrn2762
     type: "Journal article"
   -
     id: source_Gais
     label: "Gais (2003) Sleep after learning aids memory recall." 
-    xdoi: "doi:10.1101/lm.132106"
+    xdoi: doi:10.1101/lm.132106
     type: "Journal article"
   -
     id: source_Menz
     label: "Menz et al (2013) The role of sleep and sleep deprivation in consolidating fear memories." 
-    xdoi: "doi:10.1016/j.neuroimage.2013.03.001"
+    xdoi: doi:10.1016/j.neuroimage.2013.03.001
     type: "Journal article"
   -
     id: source_Holland
     label: "Holland & Lewis (2007) Emotional memory: selective enhancement by sleep." 
-    xdoi: "doi:10.1016/j.cub.2006.12.033"
+    xdoi: doi:10.1016/j.cub.2006.12.033
     type: "Journal article"
   -
     id: source_Graves
     label: "Graves (2003) Sleep deprivation selectively impairs memory consolidation for contextual fear conditioning." 
-    xdoi: "doi:10.1101/lm.48803"
+    xdoi: doi:10.1101/lm.48803
     type: "Journal article"
   -
     id: source_Frey
     label: "Frey et al (2007) The effects of 40 hours of total sleep deprivation on inflammatory markers in healthy young adults." 
-    xdoi: "doi:10.1016/j.bbi.2007.04.003"
+    xdoi: doi:10.1016/j.bbi.2007.04.003
     type: "Journal article"
   -
     id: source_Xie
     label: "Xie et al (2013) ). Sleep drives metabolite clearance from the adult brain." 
-    xdoi: "doi:10.1126/science.1241224"
+    xdoi: doi:10.1126/science.1241224
     type: "Journal article"
   -
     id: source_Brokaw
     label: "Brokaw et al (2016) Resting state EEG correlates of memory consolidation." 
-    xdoi: "doi:10.1016/j.nlm.2016.01.008"
+    xdoi: doi:10.1016/j.nlm.2016.01.008
     pp: 17-25
     type: "Journal article"
   -
@@ -71,42 +81,42 @@ source:
   -
     id: source_Lange
     label: "Lange et al (2010) Effects of sleep and circadian rhythm on the human immune system." 
-    xdoi: "doi:10.1111/j.1749-6632.2009.05300.x"
+    xdoi: doi:10.1111/j.1749-6632.2009.05300.x
     type: "Journal article"
   -
     id: source_Burgess
     label: "Burgess et al (2002) ). Bright light, dark and melatonin can promote circadian adaptation in night shift workers." 
-    xdoi: "doi:10.1053/smrv.2001.0215"
+    xdoi: doi:10.1053/smrv.2001.0215
     type: "Journal article"
   -
     id: source_Plog
     label: "Plog & Nedergaard (2018) The glymphatic system in central nervous system health and disease: past, present, and future" 
-    xdoi: "doi:10.1146/annurev-pathol-051217-111018"
+    xdoi: doi:10.1146/annurev-pathol-051217-111018
     type: "Journal article"
   -
     id: source_Killgore13
     label: "Klilgore & Weber (2013) Sleep deprivation and cognitive performance." 
-    xdoi: "doi:10.1007/978-1-4614-9087-6_16"
+    xdoi: doi:10.1007/978-1-4614-9087-6_16
     type: "Journal article"
   -
     id: source_Harrison
     label: "Harrison & Horne (2000) The impact of sleep deprivation on decision making: A review." 
-    xdoi: "doi:10.1037/1076-898x.6.3.236"
+    xdoi: doi:10.1037/1076-898x.6.3.236
     type: "Journal article"
   -
     id: source_Howard
     label: "Howard et al (2007) The interactive effects of extended wakefulness and low-dose alcohol on simulated driving and vigilance. " 
-    xdoi: "https://doi.org/10.1093/sleep/30.10.1334"
+    xdoi: https://doi.org/10.1093/sleep/30.10.1334
     type: "Journal article"
   -
     id: source_Doran
     label: "Doran et al (2001) Sustained attention performance during sleep deprivation: evidence of state instability." 
-    xdoi: "doi:10.1101/lm.132106"
+    xdoi: doi:10.1101/lm.132106
     type: "Journal article"
   -
     id: source_Killgore07
     label: "Killgore et al (2007) The trait of Introversion–Extraversion predicts vulnerability to sleep deprivation." 
-    xdoi: "doi:10.1111/j.1365-2869.2007.00611.x"
+    xdoi: doi:10.1111/j.1365-2869.2007.00611.x
     type: "Journal article"
   -
     id: source_VanDongen
@@ -116,7 +126,7 @@ source:
   -
     id: source_Kuypers
     label: "Kuypers (2007) psychedelic bliss: memory and risk taking during MDMA intoxication." 
-    xdoi: "ISBN:978-90-9021656-0"
+    xdoi: ISBN:978-90-9021656-0
     type: "Journal article"
   -
     id: source_Williamson
@@ -128,42 +138,57 @@ source:
   -
     id: source_Croes
     label: "Croes et al (2017) Langdurige klachten na ecstasygebruik." 
-    xdoi: "url:www.trimbos.nl/docs/2c1748e6-93d5-481b-8fad-013f91a9e1df.pdf"
+    xdoi: url:www.trimbos.nl/docs/2c1748e6-93d5-481b-8fad-013f91a9e1df.pdf
     type: "Report"
   -
     id: source_Berger
     label: "Energy conservation and sleep."
-    xdoi: "doi:10.1016/0166-4328(95)00002-b"
+    xdoi: doi:10.1016/0166-4328(95)00002-b
     type: "Journal article"
   -
     id: source_Fairclough
     label: "Fairclough & Graham (1999) Impairment of driving performance caused by sleep deprivation or alcohol: A comparative Study. " 
-    xdoi: "doi:10.1518/001872099779577336"
+    xdoi: doi:10.1518/001872099779577336
     type: "Journal article"
   -
     id: source_Krueger
     label: "Kreueger et al (2006) The role of cytokines in physiological sleep regulation"
-    xdoi: "doi:10.1111/j.1749-6632.2001.tb05826.x"
+    xdoi: doi:10.1111/j.1749-6632.2001.tb05826.x
     type: "Journal article"
   -
     id: source_Jessen
     label: "Jessen et al (2015) The Glymphatic System: A Beginner’s Guide." 
-    xdoi: "doi:10.1007/s11064-015-1581-6"
+    xdoi: doi:10.1007/s11064-015-1581-6
     type: "Journal article"
   -
     id: source_Lim
     label: "Lim & Dinges (2010) A meta-analysis of the impact of short-term sleep deprivation on cognitive variables." 
-    xdoi: "doi:10.1037/a0018883"
+    xdoi: doi:10.1037/a0018883
     type: "Journal article"
   -
     id: source_Tononi
     label: "Tononi & Cirelli (2006) ). Sleep function and synaptic homeostasis." 
-    xdoi: "doi:10.1016/j.smrv.2005.05.002"
+    xdoi: doi:10.1016/j.smrv.2005.05.002
     type: "Journal article"
   -
     id: source_Beebe
     label: "Beebe et al (2010). Attention, learning, and arousal of experimentally sleep-restricted adolescents in a simulated classroom" 
-    xdoi: "doi:10.1016/j.jadohealth.2010.03.005"
+    xdoi: doi:10.1016/j.jadohealth.2010.03.005
+    type: "Journal article"
+  -
+    id: source_Allen
+    label: "Allen et al (1993). Persistent Effects of MDMA on human sleep." 
+    xdoi: https://doi.org/10.1093/sleep/16.6.560
+    type: "Journal article"
+  -
+    id: source_Schierenbeck
+    label: "Schierenbeck et al (2008). Effect of illicit recreational drugs upon sleep: cocaine, ecstacy and marijuana." 
+    xdoi: https://doi.org/10.1016/j.smrv.2007.12.004
+    type: "Journal article"
+  -
+    id: source_Lewy
+    label: "Lewy et al (1995) Melatonin marks circadian phase condition and resets the endogenous circadian pacemaker in humans." 
+    xdoi: 
     type: "Journal article"
   -
     id: source_expert_1
@@ -173,11 +198,12 @@ source:
     id: source_expert_2
     label: "Expert 2" 
     type: "Interview expert"
-  -
+ -
     id: source_expert_3
     label: "Expert 3" 
     type: "Interview expert"
 
+---
 assertion:
   -
     id: assertion_sleep_memory_1
@@ -360,6 +386,26 @@ assertion:
     source:
       id: source_Lim
   -
+    id: assertion_MDMA_sleep_architecture
+    label: MDMA decreases the total sleep and the amount of stage 2 (non-REM) sleep. 
+    source:
+      id: source_Allen
+  -
+    id: assertion_alcohol_sleep_architecture
+    label: Alcohol increases the deep, slow wave sleep whilst it decreases the amount of REM sleep. 
+    source:
+      id: source_Lizet
+  -
+    id: assertion_benzodiazepines_sleep_architecture
+    label: Benzodiazepines increases the deep, slow wave sleep whilst it decreases the amount of REM sleep. 
+    source:
+      id: source_expert_2
+  -
+    id: assertion_cannabis_sleep_architecture
+    label: REM sleep is completely restricted through cannabis.
+    source:
+      id: source_Schierenbeck
+  -
     id: assertion_resilience
     label: Sleep increases resiliency. 
     source:
@@ -369,298 +415,353 @@ assertion:
     label: Sleep deprivation causes for a stress response to be a greater disturbance. 
     source:
       id: source_expert_1
-  - 
+   - 
     id: assertion_chronic_sleeping_habits
     label: A chronic, healthy, regular sleeping habit is beneficial for the physical and mental wellbeing. 
     source:
       id: source_expert_1
   -
-    id: assertion_nap_1
-    label: A (one hour) nap in the afternoon prior to skipping a night, postpones the decrease in noctural performance. 
+   id: assertion_nap_1
+    label: A (one hour) nap in the afternoon prior to skipping a night, postpones the decrease in performance during the night. 
     source:
       id: source_expert_1
   -
-    id: assertion_nap_2
+   id: assertion_nap_2
     label: A (one hour) nap has a positive effect on mood and performance. This effect will last for a couple of hours. 
     source:
       id: source_expert_1
   -
-    id: assertion_nap_3
+   id: assertion_nap_3
     label: A (one hour) nap brings your body and brain rest. 
     source:
       id: source_expert_1
   -
-    id: assertion_nap_4
+   id: assertion_nap_4
     label: A nap is not a substitution for sleep. 
     source:
       id: source_expert_1
   -
-    id: assertion_sleeping_pills_1
+   id: assertion_sleeping_pills_1
     label: Sleeping pills ensure that you fall asleep. 
     source:
       id: source_expert_1
   -
-    id: assertion_sleeping_pills_2
+   id: assertion_sleeping_pills_2
     label: Sleeping pills decrease deep, slow wave sleep which is the recovery sleep.
     source:
       id: source_expert_1
-  -
-    id: assertion_sleeping_pills_3
+ -
+   id: assertion_sleeping_pills_3
     label: In general, sleeping pills are not that harmful. 
     source:
       id: source_expert_1
-  -
-    id: assertion_risky_behaviour 
+ -
+   id: assertion_risky_behaviour 
     label: Sleep deprivation results in risky behaviour. 
     source:
       id: source_expert_1
-  -
-    id: assertion_attention_span 
+ -
+   id: assertion_attention_span 
     label: Sleep deprivation results in a shortening of attention span. 
     source:
       id: source_expert_1
-  -
-    id: assertion_emotional_heaviness
+ -
+   id: assertion_emotional_heaviness
     label: Sleep deprivation aggravates the emotional heaviness of negative aspects. 
     source:
       id: source_expert_1
-  -
-    id: assertion_errors
+ -
+   id: assertion_errors
     label: Sleep deprivation causes someone to make more errors. 
     source:
       id: source_expert_1
-  -
-    id: assertion_stressors
+ -
+   id: assertion_stressors
     label: Sleep decreases the impact of stressors. 
     source:
       id: source_expert_1
-  -
-    id: assertion_relaxation
+ -
+   id: assertion_relaxation
     label: Relaxation is important for the body and the brain. 
     source:
       id: source_expert_1
-  -
-    id: assertion_bad_trip_1
+ -
+   id: assertion_sleep_debt_4
+    label: When the REM sleep becomes deprived, it is compensated for 50% during the next period of sleep. 
+    source:
+      id: source_expert_1
+ -
+   id: assertion_sleep_debt_5
+    label: When the deep sleep becomes deprived, it is compensated for almost 100% during the next period of sleep. 
+    source:
+      id: source_expert_1
+ -
+   id: assertion_bad_trip_1
     label: Sleep deprivation is a risk factor for a bad trip.
     source:
       id: source_expert_2
-  -
-    id: assertion_bad_trip_2
+ -
+   id: assertion_bad_trip_2
     label: Sleep deprivation contributes to the emergence of a bad trip. 
     source:
       id: source_expert_2
-  -
-    id: assertion_long_term_effects
+ -
+   id: assertion_long_term_effects
     label: Sleep deprivation contributes to the emergence of long term effects of drug use like HPPD.
     source:
       id: source_expert_2
-  -
-    id: assertion_bad_trip_3
+ -
+   id: assertion_bad_trip_3
     label: The risk of having a bad trip is smallest when one is in a good mental and physical setting. 
     source:
       id: source_expert_2
-  -
-    id: assertion_SD_set
-    label: Ones personal set becomes worse due to sleep deprivation. 
+ -
+   id: assertion_SD_set
+    label: Your personal set becomes worse due to sleep deprivation. 
     source:
       id: source_expert_2
-  -
-    id: assertion_bad_trip_4
+ -
+   id: assertion_bad_trip_4
     label: A bad trip can cause long term effects like HPPD or derealization/depersonalization disorder. 
     source:
       id: source_expert_2
-  -
-    id: assertion_sleep_protects
+ -
+   id: assertion_sleep_protects
     label: Sleep is a protective factor against effects like HPPD, derealization/depersonalization disorder and a bad trip. 
     source:
       id: source_expert_2
-  -
-    id: assertion_benzo_hypnogram
+ -
+   id: assertion_benzo_hypnogram
     label: Benzodiazepines change the hypogram (sleep architecture).
     source:
       id: source_expert_2
-  -
-    id: assertion_benzo_sleep
+ -
+   id: assertion_benzo_sleep
     label: Sleep under the influence of benzodiazepines is better than total sleep deprivation. 
     source:
       id: source_expert_2
-  -
-    id: assertion_GHB_effect
+ -
+   id: assertion_GHB_effect
     label: The undesired effect of XTC can be dampened by GHB. 
     source:
       id: source_expert_2
-  -
-    id: assertion_GHB_combination
+ -
+   id: assertion_GHB_combination
     label: The combination of GHB and stimulants is not dangerous, provided than an appropriate dose of GHB is taken. 
     source:
       id: source_expert_2
-  -
-    id: assertion_benzo_addictive
+ -
+   id: assertion_benzo_addictive
     label: Benzodiazepines are addictive. 
     source:
       id: source_expert_2
-  -
-    id: assertion_GHB_coma
+ -
+   id: assertion_GHB_coma
     label: An overdose of GHB will put you in a coma. 
     source:
       id: source_expert_2
-  -
-    id: assertion_GHB_addictive
+ -
+   id: assertion_GHB_addictive
     label: GHB is more addictive than benzodiazepines are. 
     source:
       id: source_expert_2
-  -
-    id: assertion_benzo_treatment 
+ -
+   id: assertion_benzo_treatment 
     label: In case of an XTC overdoses, benzodiazepines are the first choice of treatment. 
     source:
       id: source_expert_2
-  -
-    id: assertion_GHB_paradoxical
+ -
+   id: assertion_GHB_paradoxical
     label: GHB can induce a paradoxical reaction, meaning it gives a stimulant effect instead of a calming effect. 
     source:
       id: source_expert_2
-  -
-    id: assertion_benzo_paradoxical
+ -
+   id: assertion_benzo_paradoxical
     label: Benzodiazepines can induce a paradoxical reaction, meaning they give a stimulant effect instead of a calming effect. 
     source:
       id: source_expert_2
-  -
-    id: assertion_rebound_effect
+ -
+   id: assertion_rebound_effect
     label: Feelings of anxiety can be suppressed by benzodiazepines but it is possible for those feelings to recur even more intense than before when the substance stops working. This is called the rebound effect. 
     source:
       id: source_expert_2
-  -
-    id: assertion_benzo_individual_differences
+ -
+   id: assertion_benzo_individual_differences
     label: Everyone responds differently to benzodiazepines. 
     source:
       id: source_expert_2
-  -
-    id: assertion_relaxation_2
-    label: Relaxation helps you fall asleep, as it prepares you for sleep. 
+ -
+   id: assertion_patients
+    label: Patients who report drug-related complaints or bad trips were often sleep deprived. 
+    source:
+      id: source_expert_2
+ -
+   id: assertion_sleep_disorders
+    label: It seems that there are certain sleep disorders, like sleep paralysis, that are more common after the use of XTC.  
+    source:
+      id: source_expert_2
+ -
+   id: assertion_sleep_serotonin
+    label: Sleep is, among other processes, mediated through serotonin. 
+    source:
+      id: source_expert_2
+ -
+   id: assertion_relaxation_2
+    label: Relaxation helps you fall sleep. 
     source:
       id: source_expert_3
-  -
-    id: assertion_resting_4
+ -
+   id: assertion_resting_4
     label: Resting is beneficial for the body and mind. 
     source:
       id: source_expert_3
-  -
-    id: assertion_resting_5
-    label: Rest is not the same as sleep and it is not sufficient. 
+ -
+   id: assertion_resting_5
+    label: Rest is not the same as sleep. 
     source:
       id: source_expert_3
-  -
-    id: assertion_frustration
+ -
+   id: assertion_resting_6
+    label: Rest is not sufficient. 
+    source:
+      id: source_expert_3
+ -
+   id: assertion_temperature
+    label: Sleeping in a cold environment helps you to fall asleep. 
+    source:
+      id: source_expert_3
+ -
+   id: assertion_ventilation
+    label: Sleeping in a ventilated evironment helps you to fall asleep. 
+    source:
+      id: source_expert_3
+ -
+   id: assertion_quietness
+    label: Sleeping in a quiet environment helps you to fall asleep. 
+    source:
+      id: source_expert_3
+ -
+   id: assertion_dark
+    label: Sleeping in a dark environment helps you to fall asleep. 
+    source:
+      id: source_expert_3
+ -
+   id: assertion_frustration
     label: Not being able to sleep can be experienced as frustrating. 
     source:
       id: source_expert_3
-  -
-    id: assertion_benzo_quality 
+ -
+   id: assertion_benzo_quality 
     label: Benzodiazepines negatively influence the quality of sleep. 
     source:
       id: source_expert_3
-  -
-    id: assertion_subsance_combination
-    label: Combining substances is discouraged in every circumstance. 
+ -
+   id: assertion_subsance_combination
+    label: Combining substances can have possible side effects and is therefore discouraged in any circumstance. 
     source:
       id: source_expert_3
-  -
-    id: assertion_diurnal_sleep_risk
+ -
+   id: assertion_diurnal_sleep_risk
     label: When you sleep during the day, chances are you will not be able to sleep at night. 
     source:
       id: source_expert_3
-  -
-    id: assertion_sleep_debt
+ -
+   id: assertion_sleep_debt_2
     label: A sleep debt of one night of sleep deprivation can be partially caught up on. 
     source:
       id: source_expert_3
-  -
-    id: assertion_CGT
+ -
+   id: assertion_CGT
     label: Cognitive behavioral therapy is the first choice of treatment for chronic sleep deprivation, not pills. 
     source:
       id: source_expert_3
-  -
-    id: assertion_melatonin
+ -
+   id: assertion_melatonin_1
     label: Melatonin only works well if the melatonin level is disturbed due to heavy circumstances. 
     source:
       id: source_expert_3
-  -
-    id: assertion_circadian_rhythm
+ -
+   id: assertion_melatonin_5
+    label: Taking melatonin unnecessarily can result in disturbance of the circadian rhtyhm.  
+    source:
+      id: source_expert_3
+ -
+   id: assertion_circadian_rhythm
     label: The biggest problem is not skipping one night, but the fact that the circadian rhythm is disturbed. 
     source:
       id: source_expert_3
-  -
-    id: assertion_advice_chronic_SP
+ -
+   id: assertion_advice_chronic_SP
     label: The advice for people with chronic sleeping problems is to break the pattern and not stay in bed if sleeping does not work; get out of bed instead, change settings and try again later. 
     source:
       id: source_expert_3
-  -
-    id: assertion_substance_disturb_sleep
-    label: Many substances disturb the sleep architecture. 
-    source:
-      id: source_expert_3
-  -
-    id: assertion_restriction_therapy
+ -
+   id: assertion_restriction_therapy
     label: Restriction therapy works in the way that people with chronic sleeping problems get restricted sleep, so their circadian rhythm gets back on track. 
     source:
       id: source_expert_3
-  -
-    id: assertion_sleeping_conditions
-    label: To prepare for sleep, it is important to have the right temperature, ventilation, quietness and no light. 
+ -
+   id: assertion_circadian_rhythm_2
+    label: Your body is set on a 24-hour rhythm which is called the circadian rhythm.  
     source:
       id: source_expert_3
-
+ -
+   id: assertion_circadian_rhythm_3
+    label: Your body will return to its circadian rhythm by itself if you give it a hand. 
+    source:
+      id: source_expert_3
+ -
+   id: assertion_recover_of_SD
+    label: You can recover from one night of sleep deprivation. 
+    source:
+      id: source_expert_3
+ -
+   id: assertion_melatonin_2
+    label: Exogenous melatonin intake can change the circadian rhythm, depending on the time of intake. 
+    source:
+      id: source_Lewy
+ -
+   id: assertion_melatonin_3
+    label: The time exogenous melatonin should be taken, depends on the Dim Light Melatonin Onset (DLMO) which is the time that the endogenous production of melatonin starts. 
+    source:
+      id: source_Lewy
+-
+   id: assertion_melatonin_4
+    label: The time at which the endogenous melatonin production starts (DLMO) is different for every individual. 
+    source:
+      id: source_Lewy
+-
+   id: assertion_sleep_debt_3
+    label: The sleeping debt gets bigger the longer you stay sleep deprived.  
+    source:
+      id: source_expert_3
+-
+   id: assertion_XTC_serotonin
+    label: The sleeping debt gets bigger the longer you stay sleep deprived.  
+    source:
+      id: source_Schierenbeck
+---
 justification:
-  -
+-
     id: justification_01
-    label: Sleep prevents us from getting sick and (therefore) sleep deprivation causes an impaired immune system. Sleep prevents a disbalance of inflammatory cytokines and therefore health is maintained.
+    label: Sleep is important. 
     assertion:
-      id: [assertion_cytokines, assertion_cytokines_function, assertion_SD_cytokines]
-  -
+      id: [assertion_cytokines, assertion_cytokines_function, assertion_SD_cytokines, assertion_sleep_memory_1, assertion_sleep_memory_2, assertion_sleep_memory_3,  assertion_sleep_memory_4, assertion_sleep_memory_5, assertion_sleep_memory_6, assertion_glympathic_system_1, assertion_glympathic_system_2, assertion_sleep_glympathic_system, assertion_sleep_protects, assertion_resiliency] 
+-
     id: justification_02
-    label: Sleep is important for our memory and (therefore) sleep deprivation causes memory impairment. 
+    label: Sleep deprivation is problematic. 
     assertion:
-      id: [assertion_sleep_memory_1, assertion_sleep_memory_2, assertion_sleep_memory_3,  assertion_sleep_memory_4, assertion_sleep_memory_5, assertion_sleep_memory_6]
-  -
-    id: justification_03
-    label: Sleep protects us from toxicants and (therefore) sleep deprivation is associated with neurological diseases.
-    assertion:
-      id: [assertion_glympathic_system_1, assertion_glympathic_system_2, assertion_sleep_glympathic_system]
+      id: [assertion_SD_performance, assertion_attention, assertion_inattentive_behaviours, assertion_errors, assertion_attention_span, assertion_stress_response, assertion_SD_decision, assertion_risky_behaviour, assertion_stressors, assertion_state_instability, assertion_SD_sensory_perception, assertion_SD_emotion_1, assertion_SD_emotion_2, assertion_emotional_heaviness, assertion_bad_trip_1, assertion_bad_trip_2, assertion_long_term_effects, assertion_patients, assertion_SD_set, assertion_bad_trip_3, assertion_bad_trip_4, assertion_sleep_disorders] 
   -
     id: justification_04
     label: Resting is not as beneficial as sleep, but is preferred over total sleep deprivation as resting state resembles a sleep state. 
     assertion:
-      id: [assertion_resting_1, assertion_resting_2, assertion_resting_3, assertion_relaxation]
+      id: [assertion_resting_1, assertion_resting_2, assertion_resting_3, assertion_relaxation, assertion_resting_4, assertion_resting_5, assertion_resting_6]
   -
     id: justification_05
     label: Nocturnal sleep is preferred over diurnal sleep, but diurnal sleep is preferred over total sleep deprivation. 
     assertion:
       id: [assertion_nocturnal_1, assertion_nocturnal_2, assertion_sleep_debt]
-  -
-    id: justification_06
-    label: Sleep deprivation causes impaired cognitive performance.
-    assertion:
-      id: [assertion_SD_performance, assertion_attention, assertion_inattentive_behaviours, assertion_errors, assertion_attention_span]
-  -
-    id: justification_07
-    label: Sleep deprivation causes impaired decision making.
-    assertion:
-      id: [assertion_SD_decision, assertion_risky_behaviour, assertion_stressors]
-  -
-    id: justification_08
-    label: Sleep deprivation causes state instability.
-    assertion:
-      id: [assertion_state_instability]
-  -
-    id: justification_09
-    label: Sleep deprivation causes impaired sensory perception. 
-    assertion:
-      id: [assertion_SD_sensory_perception]
-  -
-    id: justification_10
-    label: Sleep deprivation affects emotional perception and experience.
-    assertion:
-      id: [assertion_SD_emotion_1, assertion_SD_emotion_2, assertion_emotional_heaviness]
   -
     id: justification_11
     label: There are individual differences in the effect sleep deprivation has on people.
@@ -678,9 +779,9 @@ justification:
       id: [assertion_SD_alcohol, assertion_interaction_SD_alcohol_1, assertion_interaction_SD_alcohol_2]
   -
     id: justification_14
-    label: Taking benzodiazepines is preferred over total sleep deprivation. 
+    label: Taking benzodiazepines may be better than total sleep deprivation. 
     assertion:
-      id: [assertion_sleeping_pills_1, assertion_sleeping_pills_2, assertion_sleeping_pills_3, assertion_benzo_sleep] 
+      id: [assertion_sleeping_pills_1, assertion_sleeping_pills_3, assertion_benzo_sleep] 
   -
     id: justification_15
     label: Taking a nap prior to the event is beneficial. 
@@ -688,66 +789,98 @@ justification:
       id: [assertion_nap_1, assertion_nap_2, assertion_nap_3, assertion_nap_4]
   -
     id: justification_16
-    label: Having a chronic, regular sleeping rhythm is beneficial. 
+    label: Having a chronic, regular sleeping rhythm is important. 
     assertion:
-      id: [assertion_resilience, assertion_chronic_sleeping_habits, assertion_stress_response] 
+      id: [assertion_resilience, assertion_chronic_sleeping_habits, assertion_stressors, assertion_circadian_rhythm, assertion_circadian_rhythm_2] 
   -
     id: justification_17
-    label: Medically or biologically speaking it is not dangerous to combine benzodiazepines or GHB with stimulants. 
+    label: It is not dangerous to combine benzodiazepines or GHB with stimulants. 
     assertion:
       id: [assertion_GHB_effect, assertion_GHB_combination, assertion_benzo_treatment] 
   -
     id: justification_18
-    label: Morally or socially speaking it is dangerous to combine benzodiazepines or GHB with stimulants. 
+    label: It is dangerous to combine benzodiazepines or GHB with stimulants. 
     assertion:
-      id: [assertion_GHB_addictive, assertion_benzo_addictive, assertion_benzo_individual_differences] 
+      id: [assertion_GHB_addictive, assertion_benzo_addictive, assertion_GHB_paradoxical, assertion_benzo_paradoxical, assertion_rebound_effect, assertion_GHB_coma, assertion_benzo_individual_differences, assertion_CGT, assertion_subsance_combination] 
   -
-    id: justification_19
-    label: Medically or biologically speaking it can be dangerous to combine benzodiazepines or GHB with stimulants. 
+    id: justification_22
+    label: It is important to prepare yourself for going to sleep. 
     assertion:
-      id: [assertion_GHB_paradoxical, assertion_benzo_paradoxical, assertion_rebound_effect, assertion_GHB_coma, assertion_benzo_individual_differences] 
+      id: [assertion_relaxation_2, assertion_temperature, assertion_ventilation, assertion_quietness, assertion_dark] 
   -
-    id: justification_20
-    label: Sleep (deprivation) interacts with drug use. 
+    id: justification_23
+    label: If you cannot fall asleep, it is better to get out of bed. 
     assertion:
-      id: [assertion_bad_trip_1, assertion_bad_trip_2, assertion_bad_trip_3, assertion_bad_trip_4, assertion_long_term_effects, assertion_sleep_protects, assertion_SD_set] 
+      id: [assertion_frustration, assertion_advice_chronic_SP, assertion_restriction_therapy] 
   -
-    id: justification_21
-    label: Natural sleep is better than sleep under the influence of benzodiazepines
+    id: justification_25
+    label: Melatonin is not effective for making you fall asleep after a night out. 
     assertion:
-      id: [assertion_sleeping_pills_2, assertion_benzo_hypnogram] 
- 
+      id: [assertion_melatonin_1, assertion_melatonin_2, assertion_melatonin_3, assertion_melatonin_4, assertion_melatonin_5] 
+  -
+    id: justification_26
+    label: Sleeping during the day can interfere with your circadian ryhthm.
+    assertion:
+      id: [assertion_diurnal_sleep_risk] 
+  -
+    id: justification_27
+    label: Many substances disturb the sleep architecure. 
+    assertion:
+      id: [assertion_benzodiazepines_sleep_architecture, assertion_alcohol_sleep_architecture, assertion_cannabis_sleep_architecture, assertion_MDMA_sleep_architecture, assertion_sleeping_pills_2, assertion_melatonin_1, assertion_melatonin_2, assertion_melatonin_3, assertion_melatonin_4, assertion_melatonin_5] 
+  -
+    id: justification_28
+    label: One night of sleep deprivation is not the end of the world. 
+    assertion:
+      id: [assertion_sleep_debt_2, assertion_sleep_debt_4, assertion_sleep_debt_5, assertion_circadian_rhythm_2, assertion_circadian_rhythm_3, assertion_recover_of_SD] 
+  -
+    id: justification_29
+    label: Sleeping pills are not the solution to sleeping problems after a night out. 
+    assertion:
+      id: [assertion_circadian_rhythm, assertion_circadian_rhythm_3, assertion_benzo_quality, assertion_benzodiazepines_sleep_architecture, assertion_sleeping_pills_2, assertion_benzo_hypnogram]  
+  -
+    id: justification_30
+    label: The sooner you return to your normal circadian rhtyhm, the less damage is done by the sleep debt. 
+    assertion:
+      id: [assertion_circadian_rhythm_3, assertion_sleep_debt_3, assertion_sleep_debt_4, assertion_sleep_debt_5, assertion_benzo_quality, assertion_benzodiazepines_sleep_architecture, assertion_sleeping_pills_2]  
+-
+    id: justification_31
+    label: XTC can cause sleeping problems. 
+    assertion:
+      id: [assertion_sleep_serotonin, assertion_XTC_serotonin, assertion_sleep_disorders] 
+---
 decision:
   -
     id: decision_to_select_behavior_1
-    label: Be aware of the advantages and disadvantages of substances like GHB and benzodiazepines.
+    label: Make sure to create a chronic, healthy, regular circadian rhythm/sleeping pattern (8 hours of sleep, regular, without substances). Otherwise, make sure to at least sleep like this 3 days prior to the event. 
     justification:
-      id: [justification_14, justification_21, justification_20, justification_19, justification_18, justification_17]
-  -
+      id: [justification_01, justification_02, justification_16, justification_26] 
+ -
     id: decision_to_select_behavior_2
-    label: Know what kind of effect benzodiazepines or GHB have on you personally, before even considering using it after a night out.  
+    label: After sleep deprivation, get back to your normal circadian rhtyhm/sleeping pattern as soon as possible. 
     justification:
-      id: [justification_19, justification_18, justification_17, justification_21, justification_14]
-  -
+      id: [justification_01, justification_02, justification_16, justification_28, justification_30]   
+-
     id: decision_to_select_behavior_3
-    label: In general make sure to create a chronic, healthy, regular sleeping pattern (8 hours of sleep, regular, without substances). 
-    justification:
-      id: [justification_1, justification_2, justification_3, justification_16] 
-  -
-    id: decision_to_select_behavior_4
-    label: Make sure to sleep enough and healthy 3 days prior to the event (8 hours of sleep, regular, without substances). 
-    justification:
-      id: [justification_01, justification_02, justification_3, justification_16]
-  -
-    id: decision_to_select_behavior_5
     label: If possible, try to take a nap in the afternoon prior to the night that is going to be skipped. 
     justification:
-      id: [justification_15, justification_12, justification_13] 
+      id: [justification_01, justification_02, justification_12, justification_13, justification_15] 
   -
-    id: decision_to_select_behavior_6
-    label: If sleep is not possible at all after the night out, try to isolate yourself and quietly rest instead.  
+    id: decision_to_select_behavior_4
+    label: If sleep is not possible at all after the night out, create the conditions as if you were going to sleep and quietly rest instead.
     justification:
-      id: [justification_04, justification_06, justification_07, justification_08, justification_09, justification_10]
----
-
-
+      id: [justification_04, justification_22]
+  -
+    id: decision_to_select_behavior_5
+    label: If you cannot sleep, get out of bed, change environments and try again later. 
+    justification:
+      id: [justification_11, justification_23]
+  -
+    id: decision_to_select_behavior_6 
+    label: Do not use melatonin to fall asleep after a night out. 
+    justification:
+      id: [justification_25, justification_27]
+ -
+    id: decision_to_select_behavior_7
+    label: Be aware of the advantages and disadvantages of substances like GHB and benzodiazepines as a way to fall asleep. Know what kind of effect benzodiazepines or GHB has on you personally, before even considering using it after a night out.  
+    justification:
+      id: [justification_11, justification_14, justification_17, justification_18, justification_25, justification_27, justification_29]
