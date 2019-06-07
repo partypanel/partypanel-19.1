@@ -9,6 +9,8 @@ output:
     toc_depth: 5
     theme: united
     css: "B:\\Data\\research\\party panel\\partypanel-shared\\party panel reports.css"
+editor_options: 
+  chunk_output_type: console
 ---
 
 Party Panel 19.1-pre2 Report
@@ -28,22 +30,28 @@ This document is the report of the second pre-study, where members of the target
 ########################################################################
 
 ### Set basic configuration variables
-if (!exists('ppWave')) ppWave <- '18.1';
+if (!exists('ppWave')) ppWave <- '19.1';
 if (!exists('ppReport')) ppReport <- 'pre2';
 
 ########################################################################
 ### Packages
 ########################################################################
 
-safeRequire('here');
-safeRequire('knitr');
-safeRequire('pander');
-safeRequire('xtable');
+ufs::safeRequire('here');
+ufs::safeRequire('knitr');
+ufs::safeRequire('pander');
+ufs::safeRequire('xtable');
 
 ### Get dev versions of some packages
-devtools::install_gitlab("r-packages/ufs");
-devtools::install_gitlab("r-packages/yum");
-devtools::install_gitlab("r-packages/rock");
+remotes::install_gitlab("r-packages/ufs",
+                        upgrade="never",
+                        quiet=TRUE);
+remotes::install_gitlab("r-packages/yum",
+                        upgrade="never",
+                        quiet=TRUE);
+remotes::install_gitlab("r-packages/rock",
+                        upgrade="never",
+                        quiet=TRUE);
 
 ########################################################################
 ### Settings
@@ -55,18 +63,18 @@ knitr::opts_chunk$set(comment=NA);
 
 options(width = 160);
 options(xtable.type = "html");
-panderOptions('knitr.auto.asis', FALSE);
-panderOptions('table.split.table', Inf);
+pander::panderOptions('knitr.auto.asis', FALSE);
+pander::panderOptions('table.split.table', Inf);
 
 ########################################################################
 ### Set the variables with the paths
 ########################################################################
 
 ### Set the additional paths
-outputPath <- here('preparation', 'pre2', 'output');
-workingPath <- here('preparation', 'pre2', 'output');
-dataPath <- here('preparation', 'pre2', 'data--[[PUBLIC]]');
-scriptPath <- here('preparation', 'pre2', 'scripts');
+outputPath <- here::here('preparation', 'pre2', 'output');
+workingPath <- here::here('preparation', 'pre2', 'output');
+dataPath <- here::here('preparation', 'pre2', 'data--[[PUBLIC]]');
+scriptPath <- here::here('preparation', 'pre2', 'scripts');
 
 ########################################################################
 ### Objects to store data for potential later use
@@ -82,16 +90,17 @@ ppDat[[ppWave]][[ppReport]] <- list();
 
 ```{r, results='asis', fig.height=22}
 
-parsedSource <-
+### Pass customized 'codes' to only extract DCT specifications
+parsedSources <-
   rock::parse_sources(dataPath,
+                      codeRegexes = c(codes = "\\[\\[dct\\:([a-zA-Z0-9._>-]+)\\]\\]"),
                       persistentIds=c("caseId"));
 
-write.csv(parsedSource$sourceDf,
-          file.path(outputPath,
-                    "sourceDf.csv"),
-          row.names=FALSE);
+### Show results
+cat(rock::collect_coded_fragments(parsedSources));
 
-write.csv(parsedSource$mergedSourceDf,
+### Store merged code dataframe
+write.csv(parsedSources$mergedSourceDf,
           file.path(outputPath,
                     "mergedSourceDf.csv"),
           row.names=FALSE);
