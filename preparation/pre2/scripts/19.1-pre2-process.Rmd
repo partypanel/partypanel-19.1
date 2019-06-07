@@ -8,7 +8,6 @@ output:
     #toc_float: true
     toc_depth: 5
     theme: united
-    css: "B:\\Data\\research\\party panel\\partypanel-shared\\party panel reports.css"
 editor_options: 
   chunk_output_type: console
 ---
@@ -104,8 +103,8 @@ write.csv(parsedSources$mergedSourceDf,
 
 ### Write & show results
 cat(rock::collect_coded_fragments(parsedSources,
-                                  file.path(outputPath,
-                                            "coded-fragments.md")));
+                                  output=file.path(outputPath,
+                                                   "coded-fragments.md")));
 
 ```
 
