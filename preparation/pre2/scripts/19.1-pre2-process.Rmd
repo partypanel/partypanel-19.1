@@ -96,71 +96,16 @@ parsedSources <-
                       codeRegexes = c(codes = "\\[\\[dct\\:([a-zA-Z0-9._>-]+)\\]\\]"),
                       persistentIds=c("caseId"));
 
-### Show results
-cat(rock::collect_coded_fragments(parsedSources));
-
 ### Store merged code dataframe
 write.csv(parsedSources$mergedSourceDf,
           file.path(outputPath,
                     "mergedSourceDf.csv"),
           row.names=FALSE);
 
-print(parsedSource);
-
-plot(parsedSource$inductiveCodeTrees$code);
-
-collapsed_sum <-
-  rock::collapse_occurrences(parsedSource);
-
-collapsed_logical <-
-  rock::collapse_occurrences(parsedSource,
-                             logical=TRUE);
-
-write.csv(collapsed_sum,
-          file.path(outputPath,
-                    "collapsed-sum.csv"),
-          row.names=FALSE);
-
-write.csv(collapsed_logical,
-          file.path(outputPath,
-                    "collapsed-logical.csv"),
-          row.names=FALSE);
-
-ufs::cat0("\n\n### Collapsed data (sum:\n\n");
-
-knitr::kable(collapsed_sum);
-
-ufs::cat0("\n\n### Collapsed data (logical):\n\n");
-
-knitr::kable(collapsed_logical);
-
-### Save coded fragments for eevry code
-
-writeLines(rock::collect_coded_fragments(parsedSource, context=3),
-           file.path(outputPath,
-                     "coded-fragments.md"));
+### Write & show results
+cat(rock::collect_coded_fragments(parsedSources,
+                                  file.path(outputPath,
+                                            "coded-fragments.md")));
 
 ```
-
-# Code frequencies
-
-```{r codeFrequencies}
-
-knitr::kable(sort(parsedSource$countedCodings, decreasing=TRUE));
-
-```
-
-# Co-occurrences
-
-```{r co-occurrence}
-
-coOcc <-
-  rock::create_cooccurrence_matrix(parsedSource,
-                                   plotHeatmap = TRUE);
-
-knitr::kable(coOcc);
-
-```
-
-
 
