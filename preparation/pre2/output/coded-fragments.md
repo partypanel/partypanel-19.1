@@ -2,6 +2,8 @@
 
 ### descriptiveNorms_73dnt5zp
 
+-----
+
 norm
 
 -----
@@ -11,6 +13,8 @@ Ik heb soms ook het gevoel dat mensen het raar vinden als ik om 8 uur sochtends 
 -----
 
 ### experientialAttitude_73dnt5z5
+
+-----
 
 attitude  and .
 
@@ -38,6 +42,8 @@ Ik haat het echt om proberen te slapen en dat het niet lukt.
 
 ### injunctiveNorms_73dnt5zj
 
+-----
+
 norm
 
 -----
@@ -47,6 +53,8 @@ Moeten weer functioneren bij werk of studie, normale leven weer oppakken.
 -----
 
 ### instrumentalAttitude_73dnt5zb
+
+-----
 
 attitude  and .
 
@@ -109,6 +117,8 @@ Het kost meer moeite dan enkel slapen wanneer ze moe zijn.
 -----
 
 ### perceivedBehavioralControl_73dnt603
+
+-----
 
 perceived behavioral control
 

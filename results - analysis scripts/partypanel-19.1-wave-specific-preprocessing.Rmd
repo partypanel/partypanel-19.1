@@ -1,0 +1,122 @@
+
+```{r}
+
+### Note that this file is run after the wave-specific preparation, so anything
+### specified there can be used here.
+
+###############################################################################
+### Create variables, do transformations, etc.
+###############################################################################
+
+### Create numeric variables holding number of visits to first aid
+# firstAidVisitVarsFull <- grep('visitedFirstAidFreq', names(dat), value=TRUE);
+# firstAidVisitVarsFreq <- grep('visitedFirstAidFreq.*comment', names(dat), value=TRUE);
+# firstAidVisitVarsVisited <- setdiff(firstAidVisitVarsFull, firstAidVisitVarsFreq);
+# firstAidVisitVarsFreqNumeric <- paste0(firstAidVisitVarsFreq, "_nr");
+# dat[, firstAidVisitVarsFreqNumeric] <- lapply(dat[, firstAidVisitVarsFreq], convertToNumeric);
+# 
+# dat[, firstAidVisitVarsFreqNumeric] <- lapply(1:length(firstAidVisitVarsVisited),
+#                                               function (i) {
+#                                                 return(ifelse(dat[, firstAidVisitVarsVisited[i]]==0,
+#                                                               0,
+#                                                               as.numeric(dat[, firstAidVisitVarsFreqNumeric[i]])))});
+
+### Wave-specific data integrity checks (first element is a regex; second a condition)
+waveSpecificDataIntegrityChecks <-
+  list(c('^\\w+Freq_[^_]+(?<!comment)$', '<200')); ### Match all frequency variables
+
+  # list(c('^goingOutFreq_[[:alnum:]]+$', '<200'),
+  #      c('^substUseFreq_[[:alnum:]]+$', '<200'),
+  #      c('^otherSubstFreq_[[:alnum:]]+$', '<200'));
+
+### Copy generic beliefs to a version for each behavior. We do this by
+### copying the variables starting with 'ep' to new variables with names
+### for the two behaviors ('pre', 'post')
+varsToDuplicate <- c(grep('attExpect_', names(dat), value=TRUE),
+                     grep('attValue_', names(dat), value=TRUE),
+                     grep('pre_NrmMTC_', names(dat), value=TRUE),
+                     grep('PBCbeliefs_', names(dat), value=TRUE));
+for (i in behaviors) {
+  for (j in varsToDuplicate) {
+    ### The new name, following the general algorithm
+    newName <- paste0(i, "_", gsub('(pre_)?(.*)', '\\2', j));
+    ### Don't bother if this is the same variable
+    if (newName != j) {
+      dat[, newName] <- dat[, j];
+      ### Also copy the relevant labels
+      labelDf[nrow(labelDf)+1, ] <-
+        labelDf[labelDf$varNames.cln == j, ];
+      ### And update the variable name
+      labelDf[nrow(labelDf), 'varNames.cln'] <- newName;
+    }
+  }
+}
+rm(newName);  ### Clean up
+
+###
+###
+### Perhaps also copy the variables the AttExpect variables!!!
+###
+###
+
+
+###############################################################################
+### Specify scales (aggregates) to compute. Note that scales that are included
+### in the determinant structures should be left out because they will be
+### processed in the determinant structure.
+### Each element can be either 
+###############################################################################
+
+waveSpecificScales <- NULL;
+
+### Until makeScales has been updated to accept regular expressions,
+### collect variable names here
+# waveSpecificScales <- lapply(waveSpecificScales, function(rgx) {
+#   return(grep(rgx, names(dat), value=TRUE));
+# });
+
+###############################################################################
+### Specify determinant structures
+###############################################################################
+
+### Specify the determinant structure for each behavior
+detStruct <-
+  lapply(behaviors,
+         function(behavior) {
+   return(determinantStructure(behavior,
+                               list(behavior,
+                                    behaviorRegEx = behavior),
+                               determinantVar("intention",
+                                              "CIBERlite_int",
+                                              determinantVar("attitude",
+                                                             "CIBERlite_att",
+                                                             subdeterminants("Expectation",
+                                                                             "attExpect"),
+                                                             subdeterminants("Desirability",
+                                                                             "attValue"),
+                                                             subdeterminantProducts("attProduct",
+                                                                                    c("attExpect",
+                                                                                      "attValue"))),
+                                              determinantVar("perceivedNorm",
+                                                             "CIBERlite_pn",
+                                                             subdeterminants("Approval",
+                                                                             "NrmInjunct"),
+                                                             subdeterminants("Motivation to comply",
+                                                                             "NrmMTC"),
+                                                             subdeterminantProducts("nrmProduct",
+                                                                                    c("NrmInjunct",
+                                                                                      "NrmMTC")),
+                                                             subdeterminants("Descriptive norm",
+                                                                             "NrmDescr")),
+                                              determinantVar("pbc",
+                                                             "CIBERlite_pbc",
+                                                             subdeterminants("Control beliefs",
+                                                                             "PBCbeliefs"))
+                               )));
+                                              #,
+                                              #determinantVar("moralNorm",
+                                              #               "moralNorm"))));
+ });
+
+
+```

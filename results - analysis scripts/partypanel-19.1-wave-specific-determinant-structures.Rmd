@@ -1,0 +1,25 @@
+
+```{r wave-specific-determinant-structures-included-file}
+
+  # cat("\n\n");
+  # pandoc.header(paste0(detStruct[[1]]$name,
+  #                      " - enforcing one's own boundaries"), level=4);
+  # cat("\n\n");
+  # 
+  # data.tree:::plot.Node(detStruct[[1]]);
+  # 
+  # cat("\n\n");
+  # pandoc.header(paste0(detStruct[[2]]$name,
+  #                      " - approaching a friend who may be crossing somebody's boundaries"), level=4);
+  # cat("\n\n");
+  # 
+  # data.tree:::plot.Node(detStruct[[2]]);
+  # 
+  # cat("\n\n");
+  # pandoc.header(paste0(detStruct[[3]]$name,
+  #                      " - disclosing a crossed boundary to one's friends"), level=4);
+  # cat("\n\n");
+  # 
+  # data.tree:::plot.Node(detStruct[[3]]);
+
+```

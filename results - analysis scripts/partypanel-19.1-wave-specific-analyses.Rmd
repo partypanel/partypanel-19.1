@@ -1,0 +1,10 @@
+<!-- #### Participants in each wave -->
+
+```{r participants-per-sub-survey}
+
+# kable(multiVarFreq(dat, items=grep('^sib._Questions$', names(dat), value=TRUE)));
+
+# kable(multiResponse(dat, items=grep('^sib._Questions$', names(dat), value=TRUE)));
+
+```
+

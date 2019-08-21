@@ -1,0 +1,177 @@
+
+```{r}
+###############################################################################
+### Note that this is the first wave-specific file that is processed, even
+### before the data file is loaded.
+###############################################################################
+
+### Survey page settings: named vector with regexes that match the first
+### variable in each group (page)
+surveyPages <-
+  c(intro = "^id$",
+    partyBehavior = "^smallScreen$",
+    
+    substanceUse = "^susbstanceUseWilling$",
+    pastBehavior = "^weekdaySleep$",
+    generalQuestions = "^generalBeliefs_stay$",
+    preCIBERlite = "^preCIBERlite_intention$",
+    postCIBERlite = "^postCIBERlite_intention$",
+    attExpect = "^attExpect_conc$",
+    attValue = "^attValue_conc$",
+    nrmInjunct = "^preNrmInjunct_partyPeople$",
+    preNrmMTC = "^preNrmMTC_partyPeople$",
+    preNrmDescr = "^preNrmDescr_partyPeople$",
+    PBCbeliefs = "^PBCbeliefs_ezSleep$",
+    habit = "^habit_automatic$",
+    
+    demographics = "^noDemographics$",
+    partyPanelCode = "^partyPanelCode$",
+    ending = "^endingFinal$");
+
+### This is used in the overarching report to compare dropout rates
+fiveSectionMarkers <-
+  c("intro",
+    "partyBehavior",
+    "generalQuestions",
+    "demographics",
+    "ending");
+
+### Variables using the 'special' frequency measurement question type
+frequencyVars <- c('goingOutFreq', 'substUseFreq');
+
+### Bidimensional scales (and how much to subtract to correct)
+waveSpecificBidimensionalScales <- list(c("AttValue_", -4),
+                                        c("NormMTC_", -4));
+
+### Variables to rename
+waveSpecificVarnameRegExPairs <- list(#c("^(.+)beliefs(.+)$", "\\1Beliefs\\2"),
+                                      c("substUseFreqNr_fourfa_nr", "substUseFreqNr_fourf_nr"),
+                                      c("^pre_vEducation$", "prevEducation"),
+                                      c("^post_code$", "postcode"));
+
+# ### Overview of variables and how to visualise and analyse them
+# ### (regex, type, associations)
+# waveSpecificVariableList <-
+#   list(negativeExperience = list(regex = "^negativeExperience$",
+#                                  type = "dichotomous",
+#                                  showTotalValid=TRUE,
+#                                  showFreq = TRUE,
+#                                  showDiamondPlot=FALSE,
+#                                  showBarPlot=FALSE,
+#                                  showPropPlot=FALSE,
+#                                  showRidgelinePlot=FALSE,
+#                                  plotWidthMultiplier=1,
+#                                  assoc = NULL,
+#                                  caption = "Whether participants ever had a negative experience"),
+#        generalBeliefs   = list(regex = "sibGeneralBeliefs",   ### Regex to match one or more variables
+#                                type = "array",                ### Dichotomous, multi, open, array
+#                                showTotalValid=TRUE,
+#                                showFreq = TRUE,               ### Frequencies
+#                                showDiamondPlot=TRUE,          ### Diamond plots
+#                                showBarPlot=TRUE,              ### EasyBar plot
+#                                showPropPlot=FALSE,            ### Plot with proportions
+#                                showRidgelinePlot=TRUE,        ### Ridgeline plots
+#                                plotWidthMultiplier=2,         ### For especially narrow or wide plots
+#                                plotHeightMultiplier=1.5,      ### For especially low or high plots
+#                                assoc = c('sib._intention'),                  ### With which variables to show associations
+#                                caption = "General beliefs about flirting, boundaries, etc"),
+#        leftVenue = list(regex = "^sibLeftDueToBC$",           ### Regex to match one or more variables
+#                         type = "dichotomous",                 ### Dichotomous, multi, open, array
+#                         showTotalValid=TRUE,
+#                         showFreq = TRUE,                      ### Frequencies
+#                         showDiamondPlot=FALSE,                ### Diamond plots
+#                         showBarPlot=TRUE,                     ### EasyBar plot
+#                         showPropPlot=FALSE,                   ### Plot with proportions
+#                         showRidgelinePlot=FALSE,              ### Ridgeline plots
+#                         plotWidthMultiplier=1,                ### For especially narrow or wide plots
+#                         assoc = NULL,                         ### With which variables to show associations
+#                         caption = "Whether participants ever left a venue because a boundary was crossed"),
+#        leftVenueFreq = list(regex = "^leftVenueFreq_[^_]+$",           ### Regex to match one or more variables
+#                             type = "array",                 ### Dichotomous, multi, open, array
+#                             showTotalValid=TRUE,
+#                             showFreq = TRUE,                      ### Frequencies
+#                             showDiamondPlot=TRUE,                ### Diamond plots
+#                             showBarPlot=TRUE,                    ### EasyBar plot
+#                             showPropPlot=FALSE,                   ### Plot with proportions
+#                             showRidgelinePlot=TRUE,              ### Ridgeline plots
+#                             plotWidthMultiplier=2,                ### For especially narrow or wide plots
+#                             assoc = NULL,                         ### With which variables to show associations
+#                             caption = "Which venues participants left because a boundary was crossed"),
+#        boundariesDislikedPerson = list(regex = "sibPrsBndrsDislike",  ### Regex to match one or more variables
+#                                        type="array",                  ### Dichotomous, multi, open, array
+#                                        showTotalValid=TRUE,
+#                                        showFreq=TRUE,                 ### Frequencies 
+#                                        showDiamondPlot=FALSE,         ### Diamond plots
+#                                        showBarPlot=TRUE,              ### EasyBar plot 
+#                                        showPropPlot=FALSE,            ### Plot with proportions   
+#                                        showRidgelinePlot=FALSE,       ### Ridgeline plots    
+#                                        plotWidthMultiplier=2,         ### For especially narrow or wide plots 
+#                                        assoc = NULL,                  ### With which variables to show associations 
+#                                        caption = "Participants boundaries when they dislike a person"),
+#        boundariesAttractedPerson = list(regex = "sibPrsBndrsAttracted",
+#                                         type="array",
+#                                         showTotalValid=TRUE,
+#                                         showFreq=TRUE,
+#                                         showDiamondPlot=FALSE, 
+#                                         showBarPlot=TRUE,
+#                                         showPropPlot=FALSE,
+#                                         showRidgelinePlot=FALSE,
+#                                         plotWidthMultiplier=2,
+#                                         assoc = NULL,
+#                                         caption = "Participants boundaries when they are attracted to a person"),
+#        boundariesFlirtingPerson = list(regex = "sibPerBndrsFlirting",
+#                                        type="array",
+#                                        showTotalValid=TRUE,
+#                                        showFreq=TRUE,
+#                                        showDiamondPlot=FALSE,         
+#                                        showBarPlot=TRUE,
+#                                        showPropPlot=FALSE,
+#                                        showRidgelinePlot=FALSE,
+#                                        plotWidthMultiplier=2,
+#                                        assoc = NULL,
+#                                        caption = "Participants boundaries when they were flirting with a person"),
+#        ownFlirtingStrategies = list(regex = "^flirtingStrategies_[^o]+",
+#                                     type="array",
+#                                     showTotalValid=TRUE,
+#                                     showFreq=TRUE,
+#                                     showBarPlot=TRUE,
+#                                     showPropPlot=FALSE,
+#                                     showRidgelinePlot=FALSE,
+#                                     plotWidthMultiplier=2,
+#                                     caption="Flirting strategies participants use themselves"),
+#        delete = NULL); ### Final element to enable easy copy/pasting above
+# 
+# waveSpecificVariableList <-
+#   waveSpecificVariableList[names(waveSpecificVariableList) != 'delete'];
+
+waveSpecificVariableList <- NULL;
+
+########################################################################
+### Text fragments
+########################################################################
+
+### Description of this wave
+waveSpecificDescription <- "It was developed to explore the determinants of behaviors related to ...";
+
+### Statement about the random numbers that were assigned
+waveSpecificRandomNumberStatement <- "Participants received two random numbers, the first between (and including) 1 and 2, and the second between (and including) 1 and 4. The first random number was used to determine about which behavior participants received questions. If it was 1, participants received questions about enforcing one's own boundaries; if 2, about approaching a friend when under the impression they were crossing somebody's boundaries; and if 3, about disclosing a crossed boundary to one's friends. Participants were told which behavior would be presented to them, and they were able to indicate that they wanted to answer questions about multiple behaviors.
+
+The second random number was not used in this wave. (It was left in the questionnaire as the LimeSurvey questionnaires for new Party Panel waves are copied from the most recent preceding wave, and since two random numbers are often used, it was deemed convenient to simply leave this question in.)";
+
+waveSpecificConfidentiality <-
+  paste0("This document is confidential. It is illegal to copy or distribute it in any form. An embargo of 2 years rests upon all Party Panel datasets. The wave described in this document started on ",
+         startDate,
+         " and therefore, the dataset of this Party Panel wave will be released under CC-BY-NC-SA (see http://creativecommons.org/licenses/by-nc-sa/4.0/) on",
+         embargoLiftedDate,
+         ".");
+waveSpecificConfidentiality <-
+  paste0("The wave described in this document started on ",
+         startDate,
+         ", and therefore this document and the other Party Panel resources would normally be embargoed until ",
+         embargoLiftedDate,
+         ". However, because these results were used for a campaign by Rutgers in the summer of 2018, the Celebrate Safe project committee decided to lift the embargo on Monday the 6th of August 2018. Therefore, all resources developed for this Party Panel wave as well as the collected data are available under CC-BY-NC-SA (see http://creativecommons.org/licenses/by-nc-sa/4.0/).");
+
+### Specific thank-yous for people
+waveSpecificThankYous <- "";
+
+```
