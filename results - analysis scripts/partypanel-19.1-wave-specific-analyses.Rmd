@@ -6,5 +6,43 @@
 
 # kable(multiResponse(dat, items=grep('^sib._Questions$', names(dat), value=TRUE)));
 
+### From "veel slechter" to "veel beter"
+substanceSleepAtt_barplot <-
+  ufs::ggEasyBar(dat,
+                 rev(grep('SleepBeliefs_att', names(dat), value=TRUE)),
+                 labels = rev(labelDf$subQuestion[labelDf$varNames.cln %in% grep('SleepBeliefs_att', names(dat), value=TRUE)]),
+                 sortByMean = FALSE,
+                 labelMinPercentage = 5) +
+    ggplot2::theme(legend.position="none",
+                   text = ggplot2::element_text(family="Titillium Web"),
+                   axis.text.x = ggplot2::element_blank(),
+                   panel.grid = ggplot2::element_blank(),
+                   axis.ticks = ggplot2::element_blank());
+
+### From "veel moeilijker in slaap" to "veel makkelijker in slaap"
+substanceSleepPBC_barplot <-
+  ufs::ggEasyBar(dat,
+                 rev(grep('SleepBeliefs_pbc', names(dat), value=TRUE)),
+                 labels = rev(labelDf$subQuestion[labelDf$varNames.cln %in% grep('SleepBeliefs_pbc', names(dat), value=TRUE)]),
+                 sortByMean = FALSE,
+                 labelMinPercentage = 5) +
+    ggplot2::theme(legend.position="none",
+                   text = ggplot2::element_text(family="Titillium Web"),
+                   axis.text.x = ggplot2::element_blank(),
+                   panel.grid = ggplot2::element_blank(),
+                   axis.ticks = ggplot2::element_blank());
+
+suppressWarnings(
+  ufs::knitAndSave(substanceSleepAtt_barplot,
+                   path = workingPath,
+                   figWidth = 7, figHeight = 4,
+                   "Bar plot of attitude regarding falling asleep with different substances"));
+suppressWarnings(
+  ufs::knitAndSave(substanceSleepPBC_barplot,
+                   path = workingPath,
+                   figWidth = 7, figHeight = 4,
+                   "Bar plot of PBC regarding falling asleep with different substances"));
+
+
 ```
 
