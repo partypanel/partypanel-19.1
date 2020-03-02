@@ -172,6 +172,6 @@ waveSpecificConfidentiality <-
          ". However, because these results were used for a campaign by Rutgers in the summer of 2018, the Celebrate Safe project committee decided to lift the embargo on Monday the 6th of August 2018. Therefore, all resources developed for this Party Panel wave as well as the collected data are available under CC-BY-NC-SA (see http://creativecommons.org/licenses/by-nc-sa/4.0/).");
 
 ### Specific thank-yous for people
-waveSpecificThankYous <- "";
+waveSpecificThankYous <- "This Party Panel round would not have been possible without Lizet Wilkens, who, frankly, did most of the heavy lifting. She interviewed both experts and nightlife patrons about sleep and played a huge role in designing the questionnaire.";
 
 ```

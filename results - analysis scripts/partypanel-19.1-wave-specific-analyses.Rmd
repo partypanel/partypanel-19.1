@@ -1,4 +1,130 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 <!-- #### Participants in each wave -->
+
+### How much participants sleep on a weekday:
+
+```{r sleep-specific-1}
+
+pander::pander(rosetta::freq(dat$weekdaySleep))
+
+```
+
+### How much participants sleep when they go out
+
+```{r sleep-specific-2}
+
+pander::pander(rosetta::freq(dat$goingOutSleep))
+
+```
+
+### How much participants sleep at a festival
+
+
+```{r sleep-specific-3}
+
+pander::pander(rosetta::freq(dat$atFestivalSleep_other))
+
+```
+
+### How much participants sleep after a festival
+
+```{r sleep-specific-4}
+
+pander::pander(rosetta::freq(dat$afterFestivalSleep_other))
+
+```
+
+### How often do participant make sure they sleep enough?
+
+Scale from '(almost) never', 'sometimes', 'regularly', 'often', '(almost) always'.
+
+### 3 nights before going out
+
+```{r sleep-specific-5}
+
+pander::pander(rosetta::freq(dat$sleepBehav_pre));
+
+```
+
+### 3 nights after going out
+
+```{r sleep-specific-6}
+
+pander::pander(rosetta::freq(dat$sleepBehav_post));
+
+```
+
+```{r sleep-and-general-beliefs, fig.width=10}
+
+generalBeliefs <- grep('^generalBeliefs_', names(dat), value=TRUE);
+subQuestions <- 
+  labelDf$subQuestion[labelDf$varNames.cln %in% generalBeliefs];
+leftAnchors <- 
+  labelDf$leftAnchor[labelDf$varNames.cln %in% generalBeliefs];
+rightAnchors <- 
+  labelDf$rightAnchor[labelDf$varNames.cln %in% generalBeliefs];
+
+ufs::biAxisDiamondPlot(dat,
+                       items = generalBeliefs,
+                       subQuestions = subQuestions,
+                       leftAnchors = leftAnchors,
+                       rightAnchors = rightAnchors);
+
+behaviorchange::CIBER(dat,
+                      determinants = generalBeliefs,
+                      targets = c('pre_CIBERlite_intention',
+                                  'sleepBehav_pre'),
+                      subQuestions = subQuestions,
+                      leftAnchors = leftAnchors,
+                      rightAnchors = rightAnchors);
+
+behaviorchange::CIBER(dat,
+                      determinants = generalBeliefs,
+                      targets = c('post_CIBERlite_intention',
+                                  'sleepBehav_post'),
+                      subQuestions = subQuestions,
+                      leftAnchors = leftAnchors,
+                      rightAnchors = rightAnchors);
+
+```
+
+```{r sleep-habit, fig.width=10}
+
+habitVars <- grep('^habit_', names(dat), value=TRUE);
+subQuestions <- 
+  labelDf$subQuestion[labelDf$varNames.cln %in% habitVars];
+leftAnchors <- 
+  labelDf$leftAnchor[labelDf$varNames.cln %in% habitVars];
+rightAnchors <- 
+  labelDf$rightAnchor[labelDf$varNames.cln %in% habitVars];
+
+ufs::biAxisDiamondPlot(dat,
+                       items = habitVars,
+                       subQuestions = subQuestions,
+                       leftAnchors = leftAnchors,
+                       rightAnchors = rightAnchors);
+
+behaviorchange::CIBER(dat,
+                      determinants = habitVars,
+                      targets = c('pre_CIBERlite_intention',
+                                  'sleepBehav_pre'),
+                      subQuestions = subQuestions,
+                      leftAnchors = leftAnchors,
+                      rightAnchors = rightAnchors);
+
+behaviorchange::CIBER(dat,
+                      determinants = habitVars,
+                      targets = c('post_CIBERlite_intention',
+                                  'sleepBehav_post'),
+                      subQuestions = subQuestions,
+                      leftAnchors = leftAnchors,
+                      rightAnchors = rightAnchors);
+
+```
 
 ```{r participants-per-sub-survey}
 

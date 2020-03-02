@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 
 ```{r}
 
@@ -79,44 +84,60 @@ waveSpecificScales <- NULL;
 ### Specify determinant structures
 ###############################################################################
 
+
+
 ### Specify the determinant structure for each behavior
 detStruct <-
   lapply(behaviors,
          function(behavior) {
-   return(determinantStructure(behavior,
-                               list(behavior,
-                                    behaviorRegEx = behavior),
-                               determinantVar("intention",
-                                              "CIBERlite_int",
-                                              determinantVar("attitude",
-                                                             "CIBERlite_att",
-                                                             subdeterminants("Expectation",
-                                                                             "attExpect"),
-                                                             subdeterminants("Desirability",
-                                                                             "attValue"),
-                                                             subdeterminantProducts("attProduct",
-                                                                                    c("attExpect",
-                                                                                      "attValue"))),
-                                              determinantVar("perceivedNorm",
-                                                             "CIBERlite_pn",
-                                                             subdeterminants("Approval",
-                                                                             "NrmInjunct"),
-                                                             subdeterminants("Motivation to comply",
-                                                                             "NrmMTC"),
-                                                             subdeterminantProducts("nrmProduct",
-                                                                                    c("NrmInjunct",
-                                                                                      "NrmMTC")),
-                                                             subdeterminants("Descriptive norm",
-                                                                             "NrmDescr")),
-                                              determinantVar("pbc",
-                                                             "CIBERlite_pbc",
-                                                             subdeterminants("Control beliefs",
-                                                                             "PBCbeliefs"))
-                               )));
-                                              #,
-                                              #determinantVar("moralNorm",
-                                              #               "moralNorm"))));
- });
+           return(
+             behaviorchange::determinantStructure(
+               behavior,
+               list(behavior,
+                    behaviorRegEx = behavior),
+               behaviorchange::determinantVar(
+                 "intention",
+                 "CIBERlite_int",
+                 behaviorchange::determinantVar(
+                   "attitude",
+                   "CIBERlite_att",
+                   behaviorchange::subdeterminants("Expectation",
+                                                   "attExpect"),
+                   behaviorchange::subdeterminants("Desirability",
+                                                   "attValue"),
+                   behaviorchange::subdeterminantProducts("attProduct",
+                                                          c("attExpect",
+                                                            "attValue"))
+                 ),
+                 behaviorchange::determinantVar(
+                   "perceivedNorm",
+                   "CIBERlite_pn",
+                   behaviorchange::subdeterminants("Approval",
+                                                   "NrmInjunct"),
+                   behaviorchange::subdeterminants("Motivation to comply",
+                                                   "NrmMTC"),
+                   behaviorchange::subdeterminantProducts("nrmProduct",
+                                                          c("NrmInjunct",
+                                                            "NrmMTC")),
+                   behaviorchange::subdeterminants("Descriptive norm",
+                                                   "NrmDescr")
+                 ),
+                 behaviorchange::determinantVar(
+                   "pbc",
+                   "CIBERlite_pbc",
+                   behaviorchange::subdeterminants("Control beliefs",
+                                                   "PBCbeliefs")
+                 )
+                 # behaviorchange::determinantVar("habit",
+                 #                                "habit")
+                 # ,
+                 # behaviorchange::determinantVar("moralNorm",
+                 #                                "moralNorm")
 
+               )
+             )
+           )
+           
+         })
 
 ```

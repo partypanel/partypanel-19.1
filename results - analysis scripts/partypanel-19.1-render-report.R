@@ -3,7 +3,7 @@
 ########################################################################
 waveNumber <- "19.1";
 surveyId <- 622298;
-startDate <- '2019-07-04';
+startDate <- '2019-12-14';
 categoricalQuestions <- c('informedConsent', 'gender',
                           'hasJob',
                           'currentEducation', 'prevEducation',
