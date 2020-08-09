@@ -6,6 +6,10 @@ editor_options:
 
 #### Infographic
 
+For the Infographic, make sure there is a link to https://unity.nl/themas/slapen
+
+(Maybe also in the animation?)
+
 ##### Sleeping behavior
 
 ```{r infographic-sleeping-behavior-categorization}
@@ -29,6 +33,10 @@ sleepHours_toCategory <- function(x) {
                "8 uur of meer"))
   );
 }
+
+###-----------------------------------------------------------------------------
+### Sleep quantity categorization
+###-----------------------------------------------------------------------------
 
 dat$weekdaySleep_cat <-
   sleepHours_toCategory(dat$weekdaySleep);
@@ -68,9 +76,247 @@ pander::pander(rosetta::freq(dat$atFestivalSleep_other_cat));
 pander::pander(rosetta::freq(dat$afterFestivalSleep_other_cat));
 ```
 
+##### Perceived sleeping quality and ease
+
+```{r infographic-sleeping-quality-and-ease, results='asis'}
+
+###-----------------------------------------------------------------------------
+### Sleep quality
+###-----------------------------------------------------------------------------
+
+sleepQualityVarsRaw <-
+  grep('SleepBeliefs_att', names(dat), value=TRUE);
+
+sleepQualityLabs <-
+  labelDf$subQuestion[labelDf$varNames.cln %in% grep('SleepBeliefs_att',
+                                                     names(dat),
+                                                     value=TRUE)];
+
+sleepQualityLabs <-
+  gsub("\\n", " ", sleepQualityLabs);
+
+sleepQualityVarsCat <-
+  paste0(sleepQualityVarsRaw, "_cat");
+
+dat[, sleepQualityVarsCat] <-
+  lapply(dat[, sleepQualityVarsRaw],
+         function(x) {
+           return(ifelse(is.na(x),
+                         NA,
+                         ifelse(x < 4,
+                                1,
+                                ifelse(x == 4,
+                                       2,
+                                       3))));
+         });
+
+substanceSleepQualityCategories_barplot <-
+  ufs::ggEasyBar(dat,
+                 rev(sleepQualityVarsCat),
+                 labels = rev(sleepQualityLabs),
+                 sortByMean = FALSE) +
+    ggplot2::theme(legend.position="none",
+                   text = ggplot2::element_text(family="Titillium Web"),
+                   axis.text.x = ggplot2::element_blank(),
+                   panel.grid = ggplot2::element_blank(),
+                   axis.ticks = ggplot2::element_blank());
+
+cat("\n\n\n\n");
+
+suppressWarnings(
+  ufs::knitAndSave(substanceSleepQualityCategories_barplot,
+                   path = workingPath,
+                   figWidth = 7, figHeight = 4,
+                   "Bar plot of perceived sleep quality after taking different substances"));
+
+cat("\n\n\n\n");
+
+sleepQualityVarsCatFreqs <-
+  ufs::multiVarFreq(dat,
+                    sleepQualityVarsCat,
+                    labels = sleepQualityLabs,
+                    sortByMean = FALSE);
+colnames(sleepQualityVarsCatFreqs) <-
+  c("Slechter", "Zelfde", "Beter");
+
+knitr::kable(
+  round(100 * sleepQualityVarsCatFreqs /
+          rowSums(sleepQualityVarsCatFreqs))
+);
+
+cat("\n\n\n\n");
+
+###-----------------------------------------------------------------------------
+### Sleep ease
+###-----------------------------------------------------------------------------
+
+sleepEaseVarsRaw <-
+  grep('SleepBeliefs_pbc', names(dat), value=TRUE);
+
+sleepEaseLabs <-
+  labelDf$subQuestion[labelDf$varNames.cln %in% sleepEaseVarsRaw];
+
+sleepEaseLabs <-
+  gsub("\\n", " ", sleepEaseLabs);
+
+sleepEaseVarsCat <-
+  paste0(sleepEaseVarsRaw, "_cat");
+
+dat[, sleepEaseVarsCat] <-
+  lapply(dat[, sleepEaseVarsRaw],
+         function(x) {
+           return(ifelse(is.na(x),
+                         NA,
+                         ifelse(x < 4,
+                                1,
+                                ifelse(x == 4,
+                                       2,
+                                       3))));
+         });
+
+substanceSleepEaseCategories_barplot <-
+  ufs::ggEasyBar(dat,
+                 rev(sleepEaseVarsCat),
+                 labels = rev(sleepEaseLabs),
+                 sortByMean = FALSE) +
+    ggplot2::theme(legend.position="none",
+                   text = ggplot2::element_text(family="Titillium Web"),
+                   axis.text.x = ggplot2::element_blank(),
+                   panel.grid = ggplot2::element_blank(),
+                   axis.ticks = ggplot2::element_blank());
+
+cat("\n\n\n\n");
+
+suppressWarnings(
+  ufs::knitAndSave(substanceSleepEaseCategories_barplot,
+                   path = workingPath,
+                   figWidth = 7, figHeight = 4,
+                   "Bar plot of perceived sleep ease after taking different substances"));
+
+cat("\n\n\n\n");
+
+sleepEaseVarsCatFreqs <-
+  ufs::multiVarFreq(dat,
+                    sleepEaseVarsCat,
+                    labels = sleepEaseLabs,
+                    sortByMean = FALSE);
+colnames(sleepEaseVarsCatFreqs) <-
+  c("Slechter", "Zelfde", "Beter");
+
+cat("\n\n\n\n");
+
+knitr::kable(
+  round(100 * sleepEaseVarsCatFreqs /
+          rowSums(sleepEaseVarsCatFreqs))
+);
+
+cat("\n\n\n\n");
+
+```
+
+##### Perceived norms regarding sleep
+
+All perceived norms are overwhelmingly positive.
+
+```{r infographic-sleeping-norms, results='asis'}
+
+injunctiveNormVarsRaw <-
+  grep("NrmInjunct_[^_]+$", names(dat), value=TRUE);
+descriptiveNormVarsRaw <-
+  grep("NrmDescr_[^_]+$", names(dat), value=TRUE);
+
+injunctiveNormLabs <-
+  paste0(gsub("_.*", ": ", injunctiveNormVarsRaw),
+         labelDf$subQuestion[labelDf$varNames.cln %in% injunctiveNormVarsRaw]);
+descriptiveNormLabs <-
+  paste0(gsub("_.*", ": ", descriptiveNormVarsRaw),
+         labelDf$subQuestion[labelDf$varNames.cln %in% descriptiveNormVarsRaw]);
+
+injunctiveNormLabs <-
+  gsub("\\n", " ", injunctiveNormLabs);
+descriptiveNormLabs <-
+  gsub("\\n", " ", descriptiveNormLabs);
+
+injunctiveNormVarsCat <-
+  paste0(injunctiveNormVarsRaw, "_cat");
+descriptiveNormVarsCat <-
+  paste0(descriptiveNormVarsRaw, "_cat");
+
+dat[, injunctiveNormVarsCat] <-
+  lapply(dat[, injunctiveNormVarsRaw],
+         function(x) {
+           return(ifelse(is.na(x),
+                         NA,
+                         ifelse(x < 4,
+                                1,
+                                ifelse(x == 4,
+                                       2,
+                                       3))));
+         });
+dat[, descriptiveNormVarsCat] <-
+  lapply(dat[, descriptiveNormVarsRaw],
+         function(x) {
+           return(ifelse(is.na(x),
+                         NA,
+                         ifelse(x < 3,
+                                1,
+                                ifelse(x < 6,
+                                       2,
+                                       3))));
+         });
+
+injunctiveNormFreqs <-
+  ufs::multiVarFreq(dat,
+                    injunctiveNormVarsCat,
+                    labels = injunctiveNormLabs,
+                    sortByMean = FALSE);
+colnames(injunctiveNormFreqs) <-
+  c("Afkeurend", "Neutraal", "Goedkeurend");
+
+cat("\n\n\n\n");
+
+knitr::kable(
+  round(100 * injunctiveNormFreqs /
+          rowSums(injunctiveNormFreqs))
+);
+
+cat("\n\n\n\n");
+
+descriptiveNormFreqs <-
+  ufs::multiVarFreq(dat,
+                    descriptiveNormVarsCat,
+                    labels = descriptiveNormLabs,
+                    sortByMean = FALSE);
+colnames(descriptiveNormFreqs) <-
+  c("(Bijna) nooit", "Soms tot vaak", "(Bijna) altijd");
+
+cat("\n\n\n\n");
+
+knitr::kable(
+  round(100 * descriptiveNormFreqs /
+          rowSums(descriptiveNormFreqs))
+);
+
+cat("\n\n\n\n");
+
+```
+
 ##### Animation
 
-###### How often do participant make sure they sleep enough?
+Punten voor het animatiefilmpje:
+
+- Het blijkt dat bijna iedereen aangeeft dat er een positieve norm is met betrekking tot voldoende slapen.
+- Het blijkt ook dat het de meeste mensen niet uitmaakt wat anderen vinden; dus die norm is niet noodzakelijk de effectiefste route in interventies. Echter, de norm zelf (eerste bullet) hing wel samen met attitude en intentie, dus deze nuancering misschien weglaten?
+- Mensen die meer last hebben van slaapgebrek (concentratieproblemen) hebben een betere slaaphygiene.
+- "FOMO", de angst dingen te missen door te gaan slapen, lijkt geen rol te spelen op basis van de Party Panel data.
+- Belangrijk opvattingen met betrekking tot van-te-voren voldoende slaap krijgen lijken:
+    - De verwachting dat van-te-voren voldoende slaap krijgen, slaapgebrek door uitgaan op kan vangen.
+    - De verwachting dat je meer kunt genieten van het uitgaan als je van-te-voren voldoende slaapt.
+- Belangrijk opvattingen met betrekking tot na het uitgaan bijslapen lijken:
+    - Als mensen het frustrerend vinden om in bed te liggen als ze niet goed kunnen slapen, is de kans dat de goed bijslapen na het uitgaan iets lager.
+- Slaapgewoonte is grotendeels een gewoontegedrag. Interventies zouden zich dus moeten richten op methoden voor gewoonteverandering. 
+
+###### How often do participants make sure they sleep enough?
 
 ```{r animation-sleeping-hygiene-1}
 
@@ -97,6 +343,7 @@ dat$sleepBehav_post_cat <-
   enforceSleepPattern_to_cat(dat$sleepBehav_post);
 
 ```
+
 Scale from '(almost) never', 'sometimes', 'regularly', 'often', '(almost) always'.
 
 ####### 3 nights before going out
