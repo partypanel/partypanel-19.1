@@ -36,7 +36,7 @@ ufs::safeRequire('data.tree');
 ufs::safeRequire('DiagrammeR');
 
 ### General purpose utilities, dataviz, etc
-ufs::safeRequire('userfriendlyscience');
+require('ufs');
 
 ### Get dev versions of some packages
 devtools::install_gitlab("r-packages/yum",

@@ -9,8 +9,8 @@ ppReport <- 'pre2';
 ### Packages
 ########################################################################
 
-if (!require('userfriendlyscience', quietly = FALSE)) {
-  stop("You need to have the userfriendlyscience package installed!");
+if (!require('ufs', quietly = FALSE)) {
+  stop("You need to have the ufs package installed!");
 }
 safeRequire('rmarkdown');
 safeRequire('here');

@@ -25,7 +25,7 @@ workingPath <- file.path(basePath,
 
 ### Load packages
 require('rmarkdown');
-require('userfriendlyscience');
+require('ufs');
 
 ########################################################################
 ### Login credentials for uploading report
